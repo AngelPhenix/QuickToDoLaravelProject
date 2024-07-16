@@ -22,7 +22,7 @@
         <ul class="mt-10">
             @foreach ($tasks as $task)
                 @if (!$task->done)
-                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Done</a>  </li>
+                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Done</a>  <a href="/delete_task/{{$task->id}}">X</a></li>
                 @endif
             @endforeach
         </ul>
@@ -30,7 +30,7 @@
         <ul class="mt-20">
             @foreach ($tasks as $task)
                 @if ($task->done)
-                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Undone</a>  </li>
+                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Undone</a>  <a href="/delete_task/{{$task->id}}">X</a></li>
                 @endif
             @endforeach
         </ul>

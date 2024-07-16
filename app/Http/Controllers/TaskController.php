@@ -38,4 +38,12 @@ class TaskController extends Controller
 
         return redirect('/');
     }
+
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+
+        $task->delete();
+        return redirect('/');
+    }
 }
