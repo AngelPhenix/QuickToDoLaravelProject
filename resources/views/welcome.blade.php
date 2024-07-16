@@ -10,11 +10,15 @@
 <body class="bg-[#15141f] h-full text-white">
 
     <div class="mx-auto max-w-7xl px-4">
+
         <form class="flex flex-col mx-auto max-w-2xl" method="post" action="/todo">
+            @csrf
+
             <label for="task_name">Task</label>
             <input class="text-black pl-2" type="text" name="task_name" id="task_name" />
             <button>Add the task</button>
         </form>
+
     </div>
 
 </body>
