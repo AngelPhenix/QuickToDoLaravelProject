@@ -19,6 +19,22 @@
             <button>Add the task</button>
         </form>
 
+        <ul class="mt-10">
+            @foreach ($tasks as $task)
+                @if (!$task->done)
+                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Done</a>  </li>
+                @endif
+            @endforeach
+        </ul>
+
+        <ul class="mt-20">
+            @foreach ($tasks as $task)
+                @if ($task->done)
+                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Undone</a>  </li>
+                @endif
+            @endforeach
+        </ul>
+
     </div>
 
 </body>

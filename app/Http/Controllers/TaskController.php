@@ -9,7 +9,11 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return view('/welcome');
+        $tasks = Task::all();
+
+        return view('/welcome', [
+            'tasks' => $tasks
+        ]);
     }
 
     public function store(Request $request)
@@ -21,6 +25,16 @@ class TaskController extends Controller
         Task::create([
             'name' => $attributes['task_name'],
         ]);
+
+        return redirect('/');
+    }
+
+    public function update($id)
+    {
+        $task = Task::findOrFail($id);
+
+        $task->done = $task->done ? 0 : 1;
+        $task->save();
 
         return redirect('/');
     }
