@@ -18,52 +18,60 @@
             <button class="bg-slate-600">Add the task</button>
         </form>
 
-        <ul class="mt-10">
-            @foreach ($tasks as $task)
-                @if (!$task->done)
-                    <li>
-                        {{ $task->name }}
-                        <form action="/task/{{$task->id}}" method="POST" style="display: inline;">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit">Mark as Done</button>
-                        </form>
-                        @auth
-                            <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete</button>
-                            </form>
-                        @endauth
-                        <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Delete</button>
-                        </form>
-                    </li>
-                @endif
-            @endforeach
-        </ul>
-        
-        <ul class="mt-20">
-            @foreach ($tasks as $task)
-                @if ($task->done)
-                    <li>
-                        {{ $task->name }}
-                        <form action="/task/{{$task->id}}" method="POST" style="display: inline;">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit">Mark as Undone</button>
-                        </form>
-                        <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Delete</button>
-                        </form>
-                    </li>
-                @endif
-            @endforeach
-        </ul>
+        <div class="flex justify-between mt-20">
+            <div>
+                <p class="pb-5 text-center">-- To do --</p>
+                <ul>
+                    @foreach ($tasks as $task)
+                        @if (!$task->done)
+                            <li>
+                                {{ $task->name }}
+                                <form action="/task/{{$task->id}}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="text-green-700">Done</button>
+                                </form>
+                                @auth
+                                    <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                @endauth
+                                <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-700">Delete</button>
+                                </form>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
+            
+            <div>
+                <p class="pb-5 text-center">-- Done --</p>
+                <ul>
+                    @foreach ($tasks as $task)
+                        @if ($task->done)
+                            <li>
+                                {{ $task->name }}
+                                <form action="/task/{{$task->id}}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="text-green-700">Undone</button>
+                                </form>
+                                <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-700">Delete</button>
+                                </form>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
+        </div>
         
 
     </div>
