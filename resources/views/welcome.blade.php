@@ -11,29 +11,60 @@
 
     <div class="mx-auto max-w-7xl px-4">
 
-        <form class="flex flex-col mx-auto max-w-2xl" method="post" action="/todo">
+        <form class="flex flex-col mx-auto max-w-2xl pt-20" method="post" action="/todo">
             @csrf
 
-            <label for="task_name">Task</label>
-            <input class="text-black pl-2" type="text" name="task_name" id="task_name" />
-            <button>Add the task</button>
+            <input class="text-black pl-2 p-3 mb-3" type="text" name="task_name" id="task_name" placeholder="Enter a new task here" />
+            <button class="bg-slate-600">Add the task</button>
         </form>
 
         <ul class="mt-10">
             @foreach ($tasks as $task)
                 @if (!$task->done)
-                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Done</a>  <a href="/delete_task/{{$task->id}}">X</a></li>
+                    <li>
+                        {{ $task->name }}
+                        <form action="/task/{{$task->id}}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit">Mark as Done</button>
+                        </form>
+                        @auth
+                            <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                        @endauth
+                        <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
                 @endif
             @endforeach
         </ul>
-
+        
         <ul class="mt-20">
             @foreach ($tasks as $task)
                 @if ($task->done)
-                    <li>{{ $task->name }}   <a href="/task/{{$task->id}}"">Undone</a>  <a href="/delete_task/{{$task->id}}">X</a></li>
+                    <li>
+                        {{ $task->name }}
+                        <form action="/task/{{$task->id}}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit">Mark as Undone</button>
+                        </form>
+                        <form action="/delete_task/{{$task->id}}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
                 @endif
             @endforeach
         </ul>
+        
 
     </div>
 
