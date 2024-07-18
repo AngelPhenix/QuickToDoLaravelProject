@@ -1,7 +1,12 @@
 <x-layout>
     <nav>
-        <a href="/register">Register</a>
-        <a href="/login">login</a>
+        @guest
+            <a href="/register"><u>Register</u></a>
+            <a href="/login"><u>login</u></a>
+        @endguest
+        @auth
+            <a href="/logout"><u>LogOut</u></a>
+        @endauth
     </nav>
 
     <form method="post" action="/post_task">
