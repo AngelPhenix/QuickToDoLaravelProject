@@ -5,6 +5,6 @@
         <a href="/login"><u>login</u></a>
     @endguest
     @auth
-        <a href="/logout"><u>LogOut</u></a>
+        <a href="/logout"><u>Logout</u></a>
     @endauth
 </nav>

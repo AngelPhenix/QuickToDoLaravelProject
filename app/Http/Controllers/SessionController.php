@@ -19,7 +19,7 @@ class SessionController extends Controller
             'username' => ['required'],
             'password' => ['required'],
         ]);
-
+        
         if(Auth::attempt($attributes)) {
             $request->session()->regenerate();
 
