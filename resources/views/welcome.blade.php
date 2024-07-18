@@ -1,4 +1,9 @@
 <x-layout>
+    <nav>
+        <a href="/register">Register</a>
+        <a href="/login">login</a>
+    </nav>
+
     <form method="post" action="/post_task">
         @csrf
 
