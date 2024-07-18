@@ -5,9 +5,7 @@
         <div class="flex flex-col">
             <label for="username">Username</label>
             <input class="py-1 px-4 text-black w-64" type="text" id="username" name="username" value="{{ old('username') }}" placeholder="Your Username"/>
-            @error('username')
-                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-            @enderror
+            <x-form-error fieldname='username' />
         </div>
 
         <div class="flex flex-col">
