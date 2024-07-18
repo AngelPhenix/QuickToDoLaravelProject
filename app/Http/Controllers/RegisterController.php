@@ -20,11 +20,7 @@ class RegisterController extends Controller
             'email' => ['required']
         ]);
 
-        User::create([
-            'name' => $attributes['username'],
-            'password' => $attributes['password'],
-            'email' => $attributes['email']
-        ]);
+        User::create($attributes);
 
         return redirect('/');
     }

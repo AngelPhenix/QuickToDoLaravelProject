@@ -13,17 +13,20 @@
 
     <div class="mt-10">
         <p>----- TASKS -----</p>
-       <ul>
-        @foreach ($tasks as $task)
-            <li>
-                {{ $task-> name }}
-                <form class="inline" method="post" action="/delete_task/{{ $task->id }}">
-                    @csrf
-                    @method('DELETE')
-                    <button>[X]</button>
-                </form>
-            </li>
-        @endforeach
-        </ul> 
+        
+        @auth
+            <ul>
+            @foreach ($tasks as $task)
+                <li>
+                    {{ $task-> name }}
+                    <form class="inline" method="post" action="/delete_task/{{ $task->id }}">
+                        @csrf
+                        @method('DELETE')
+                        <button>[X]</button>
+                    </form>
+                </li>
+            @endforeach
+            </ul> 
+        @endauth
     </div>
 </x-layout>
