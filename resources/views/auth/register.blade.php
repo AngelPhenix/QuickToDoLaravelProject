@@ -1,4 +1,6 @@
 <x-layout>
+    <x-nav/>
+
     <form class="flex flex-col items-center gap-5" method="post" action="/register">
         @csrf
 

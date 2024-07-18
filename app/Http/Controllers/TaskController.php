@@ -16,7 +16,7 @@ class TaskController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $attributes = $request->validate([
             'name' => ['required'],

@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Todo App</title>
 </head>
-<body class="bg-[#15141f] h-full text-white p-3">
+<body class="bg-[#232326] h-full text-white p-3">
         {{ $slot }}
 </body>
 </html>

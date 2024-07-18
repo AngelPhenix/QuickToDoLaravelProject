@@ -1,14 +1,8 @@
 <x-layout>
-    <nav>
-        @guest
-            <a href="/register"><u>Register</u></a>
-            <a href="/login"><u>login</u></a>
-        @endguest
-        @auth
-            <a href="/logout"><u>LogOut</u></a>
-        @endauth
-    </nav>
+    <x-nav/>
 
+
+    @auth
     <form method="post" action="/post_task">
         @csrf
 
@@ -18,8 +12,6 @@
 
     <div class="mt-10">
         <p>----- TASKS -----</p>
-        
-        @auth
             <ul>
             @foreach ($tasks as $task)
                 <li>
@@ -32,6 +24,7 @@
                 </li>
             @endforeach
             </ul> 
-        @endauth
+        
     </div>
+    @endauth
 </x-layout>
