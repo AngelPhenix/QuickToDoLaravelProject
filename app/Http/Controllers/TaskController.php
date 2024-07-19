@@ -28,8 +28,6 @@ class TaskController extends Controller
             'name' => ['required'],
         ]);
 
-        // $task = Task::create($attributes);
-
         Auth::user()->tasks()->create($attributes);
 
         return redirect('/');

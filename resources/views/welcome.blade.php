@@ -14,7 +14,7 @@
     </form>
 
     <div class="mt-10">
-        <p>----- TASKS -----</p>
+        <p class="bg-cyan-950 text-center px-3 py-2"> TASKS </p>
             <ul>
             @foreach ($tasks as $task)
                 <li>
@@ -22,7 +22,7 @@
                     <form class="inline" method="post" action="/delete_task/{{ $task->id }}">
                         @csrf
                         @method('DELETE')
-                        <button>[X]</button>
+                        <button class="text-red-500">[X]</button>
                     </form>
                 </li>
             @endforeach
