@@ -6,9 +6,13 @@ use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [TaskController::class, 'index']);
+Route::get('/', function() {
+    return view('welcome');
+});
+
 Route::post('/post_task', [TaskController::class, 'store']);
 Route::delete('/delete_task/{task}', [TaskController::class, 'destroy']);
+Route::get('/taskboard', [TaskController::class, 'index']);
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'create']);
