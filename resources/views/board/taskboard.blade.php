@@ -1,7 +1,7 @@
 <x-layout>
     @auth
 
-    <h1 class="mb-8">Welcome</h1>
+    <h1 class="mb-8">Welcome <span class="text-xl font-bold">{{ $user->username }}</span> !</h1>
 
     <form method="post" action="/post_task" class="flex gap-x-3">
         @csrf

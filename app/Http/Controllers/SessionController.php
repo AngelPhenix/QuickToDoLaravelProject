@@ -23,7 +23,7 @@ class SessionController extends Controller
         if(Auth::attempt($attributes)) {
             $request->session()->regenerate();
 
-            return redirect('/');
+            return redirect('/taskboard');
         }
 
         throw ValidationException::withMessages([

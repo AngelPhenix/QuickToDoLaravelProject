@@ -14,9 +14,7 @@ class TaskController extends Controller
         $user = Auth::user();
         $tasks = $user->tasks;
 
-        dd($user);
-
-        return view('welcome', [
+        return view('board.taskboard', [
             'tasks' => $tasks,
             'user' => $user
         ]);
