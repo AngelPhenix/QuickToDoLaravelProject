@@ -11,7 +11,11 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = [];
+
+        if(Auth::user()) {
+            $tasks = Auth::user()->tasks;
+        }
 
         return view('welcome', [
             'tasks' => $tasks,
