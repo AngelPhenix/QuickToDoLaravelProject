@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -22,7 +24,9 @@ class TaskController extends Controller
             'name' => ['required'],
         ]);
 
-        Task::create($attributes);
+        // $task = Task::create($attributes);
+
+        Auth::user()->tasks()->create($attributes);
 
         return redirect('/');
     }
