@@ -28,12 +28,12 @@ class TaskController extends Controller
 
         Auth::user()->tasks()->create($attributes);
 
-        return redirect('/');
+        return redirect('/taskboard');
     }
 
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect('/');
+        return redirect('/taskboard');
     }
 }
