@@ -10,15 +10,15 @@
         <button class="bg-slate-600 py-1 px-3">Add Task</button>
     </form>
 
-    <div class="mt-10 max-w-64">
-        <p class="bg-cyan-950 text-center px-3 py-2"> TASKS </p>
-            <ul>
+    <div class="mt-10 w-[308px]">
+        <p class="bg-cyan-950 text-center px-3 py-2 mb-3"> TASKS </p>
+            <ul class="flex flex-col gap-y-2">
             @foreach ($tasks as $task)
-                <li class="my-2">
-                    <form class="inline" method="post" action="/delete_task/{{ $task->id }}">
+                <li>
+                    <form class="bg-slate-700 text-center" method="post" action="/delete_task/{{ $task->id }}">
                         @csrf
                         @method('DELETE')
-                        <button class="hover:text-red-500">- {{ $task-> name }}</button>
+                        <button class="w-full px-3 hover:bg-red-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
                     </form>
                 </li>
             @endforeach
