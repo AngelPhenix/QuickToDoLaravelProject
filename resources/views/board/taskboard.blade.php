@@ -15,11 +15,10 @@
             <ul>
             @foreach ($tasks as $task)
                 <li class="my-2">
-                    - {{ $task-> name }}
                     <form class="inline" method="post" action="/delete_task/{{ $task->id }}">
                         @csrf
                         @method('DELETE')
-                        <button class="text-red-500">[X]</button>
+                        <button class="hover:text-red-500">- {{ $task-> name }}</button>
                     </form>
                 </li>
             @endforeach
