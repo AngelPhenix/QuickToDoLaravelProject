@@ -46,9 +46,6 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-    * @mixin \Eloquent
-    */
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);

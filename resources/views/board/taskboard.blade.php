@@ -12,13 +12,14 @@
 
     <div class="mt-10 w-[308px]">
         <p class="bg-cyan-950 text-center px-3 py-2 mb-3"> TASKS </p>
-            <ul class="flex flex-col gap-y-2">
+            <ul class="flex flex-col gap-y-1">
             @foreach ($tasks as $task)
-                <li>
-                    <form class="bg-slate-700 text-center" method="post" action="/delete_task/{{ $task->id }}">
+                <li class="w-full flex">
+                    <p class="flex-grow bg-slate-700 pl-4">{{ $task-> name }}</p>
+                    <form class="bg-slate-700 text-center flex align-middle" method="post" action="/delete_task/{{ $task->id }}">
                         @csrf
                         @method('DELETE')
-                        <button class="w-full px-3 hover:bg-red-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
+                        <button class="px-4 items-center hover:bg-red-600 [overflow-wrap:anywhere]">X</button>
                     </form>
                 </li>
             @endforeach
