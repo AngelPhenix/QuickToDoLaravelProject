@@ -18,7 +18,7 @@
 
                     <form class="flex flex-grow" method="post" action="/task_completed/{{ $task->id }}">
                         @csrf
-                        @method('UPDATE')
+                        @method('PATCH')
                         <button class="pl-4 bg-slate-700 flex flex-grow hover:bg-green-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
                     </form>
 
