@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Historic;
 use Illuminate\Http\Request;
 
 class HistoricController extends Controller
 {
-    public function store(Request $request)
+    public function index()
     {
-        $attributes = $request->validate([
-            'name' => ['required'],
+        $historic_data = Historic::all();
+
+        return view('board.historic', [
+            'historicData' => $historic_data
         ]);
-
-        Auth::user()->tasks()->create($attributes);
-
-        return redirect('/taskboard');
     }
 }

@@ -1,11 +1,12 @@
 <nav class="flex justify-center gap-10 mb-8">
     @guest
-        <a href="/"><u>Home</u></a>
-        <a href="/register"><u>Register</u></a>
-        <a href="/login"><u>login</u></a>
+        <a href="/">Home</a>
+        <a href="/register">Register</a>
+        <a href="/login">login<</a>
     @endguest
     @auth
-        <a href="/taskboard"><u>Task Board</u>
-        <a href="/logout"><u>Logout</u></a>
+        <a href="/historic">Logs</a>
+        <a href="/taskboard">Task Board</a>
+        <a href="/logout">Logout</a>
     @endauth
 </nav>
