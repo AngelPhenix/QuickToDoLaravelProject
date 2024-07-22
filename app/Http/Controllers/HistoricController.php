@@ -9,10 +9,10 @@ class HistoricController extends Controller
 {
     public function index()
     {
-        $historic_data = Historic::all();
+        $historicData = Historic::all();
 
         return view('board.historic', [
-            'historicData' => $historic_data
+            'historicData' => $historicData
         ]);
     }
 }
