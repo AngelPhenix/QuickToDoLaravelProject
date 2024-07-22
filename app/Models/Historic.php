@@ -10,4 +10,10 @@ class Historic extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'task_name',
+        'completed_by',
+        'completed_at'
+    ]
 }
