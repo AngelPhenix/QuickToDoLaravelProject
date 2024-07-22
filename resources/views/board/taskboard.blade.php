@@ -15,12 +15,19 @@
             <ul class="flex flex-col gap-y-1">
             @foreach ($tasks as $task)
                 <li class="w-full flex">
-                    <p class="flex-grow bg-slate-700 pl-4">{{ $task-> name }}</p>
+
+                    <form class="flex flex-grow" method="post" action="/task_completed/{{ $task->id }}">
+                        @csrf
+                        @method('UPDATE')
+                        <button class="pl-4 bg-slate-700 flex flex-grow hover:bg-green-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
+                    </form>
+
                     <form class="bg-slate-700 text-center flex align-middle" method="post" action="/delete_task/{{ $task->id }}">
                         @csrf
                         @method('DELETE')
-                        <button class="px-4 items-center hover:bg-red-600 [overflow-wrap:anywhere]">X</button>
+                        <button class="px-4 items-center hover:bg-red-600">X</button>
                     </form>
+
                 </li>
             @endforeach
             </ul> 
