@@ -28,7 +28,7 @@ class TaskController extends Controller
 
         Historic::create([
             'task_name' => $task->name,
-            'completed_by' => Auth::user()->name,
+            'completed_by' => Auth::user()->username,
             'completed_at' => now()->toDateTimeString()
         ]);
 
