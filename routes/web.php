@@ -13,6 +13,7 @@ Route::get('/', function() {
 Route::post('/post_task', [TaskController::class, 'store'])->middleware('auth');
 Route::delete('/delete_task/{task}', [TaskController::class, 'destroy'])->middleware('auth');
 Route::get('/taskboard', [TaskController::class, 'index'])->middleware('auth');
+Route::update('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'create']);
