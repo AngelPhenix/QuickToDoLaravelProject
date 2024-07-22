@@ -14,21 +14,23 @@
         <p class="bg-cyan-950 text-center px-3 py-2 mb-3"> TASKS </p>
             <ul class="flex flex-col gap-y-1">
             @foreach ($tasks as $task)
-                <li class="w-full flex">
+                @if (!$task->is_completed)
+                    <li class="w-full flex">
 
-                    <form class="flex flex-grow" method="post" action="/task_completed/{{ $task->id }}">
-                        @csrf
-                        @method('PATCH')
-                        <button class="pl-4 bg-slate-700 flex flex-grow hover:bg-green-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
-                    </form>
+                        <form class="flex flex-grow" method="post" action="/task_completed/{{ $task->id }}">
+                            @csrf
+                            @method('PATCH')
+                            <button class="pl-4 bg-slate-700 flex flex-grow hover:bg-green-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
+                        </form>
 
-                    <form class="bg-slate-700 text-center flex align-middle" method="post" action="/delete_task/{{ $task->id }}">
-                        @csrf
-                        @method('DELETE')
-                        <button class="px-4 items-center hover:bg-red-600">X</button>
-                    </form>
+                        <form class="bg-slate-700 text-center flex align-middle" method="post" action="/delete_task/{{ $task->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="px-4 items-center hover:bg-red-600">X</button>
+                        </form>
 
-                </li>
+                    </li>
+                @endif
             @endforeach
             </ul> 
     </div>
