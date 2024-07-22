@@ -13,7 +13,8 @@ class Historic extends Model
 
     protected $fillable = [
         'task_name',
+        'modified_by',
         'completed_by',
-        'completed_at'
+        'action'
     ];
 }

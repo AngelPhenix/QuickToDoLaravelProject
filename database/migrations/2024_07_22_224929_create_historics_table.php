@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('historics', function (Blueprint $table) {
             $table->id();
             $table->string('task_name');
+            $table->string('modified_by');
             $table->string('completed_by');
-            $table->string('completed_at');
+            $table->string('action');
         });
     }
 
