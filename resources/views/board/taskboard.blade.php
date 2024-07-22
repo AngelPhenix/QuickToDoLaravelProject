@@ -20,7 +20,7 @@
                         <form class="flex flex-grow" method="post" action="/task_completed/{{ $task->id }}">
                             @csrf
                             @method('PATCH')
-                            <button class="pl-4 bg-slate-700 flex flex-grow hover:bg-green-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
+                            <button class="pl-4 bg-slate-700 flex flex-grow text-left hover:bg-green-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
                         </form>
 
                         <form class="bg-slate-700 text-center flex align-middle" method="post" action="/delete_task/{{ $task->id }}">
