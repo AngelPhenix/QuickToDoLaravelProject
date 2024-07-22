@@ -28,8 +28,9 @@ class TaskController extends Controller
 
         Historic::create([
             'task_name' => $task->name,
-            'completed_by' => Auth::user()->username,
-            'completed_at' => now()->toDateTimeString()
+            'modified_by' => Auth::user()->username,
+            'modified_at' => now()->toDateTimeString(),
+            'action' => "completed"
         ]);
 
         return redirect('/taskboard');
@@ -48,6 +49,13 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
+        Historic::create([
+            'task_name' => $task->name,
+            'modified_by' => Auth::user()->username,
+            'modified_at' => now()->toDateTimeString(),
+            'action' => "deleted"
+        ]);
+
         $task->delete();
         return redirect('/taskboard');
     }

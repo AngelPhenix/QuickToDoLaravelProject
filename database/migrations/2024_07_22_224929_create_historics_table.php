@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('task_name');
             $table->string('modified_by');
-            $table->string('completed_by');
+            $table->string('modified_at');
             $table->string('action');
         });
     }
