@@ -15,5 +15,5 @@ class Historic extends Model
         'task_name',
         'completed_by',
         'completed_at'
-    ]
+    ];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Historic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,11 +23,14 @@ class TaskController extends Controller
 
     public function update(Task $task)
     {
-        if(!$task->is_completed) {
-            $task->is_completed = true;
-        }
-
+        $task->is_completed = true;
         $task->save();
+
+        Historic::create([
+            'task_name' => $task->name,
+            'completed_by' => Auth::user()->name,
+            'completed_at' => now()->toDateTimeString()
+        ]);
 
         return redirect('/taskboard');
     }
