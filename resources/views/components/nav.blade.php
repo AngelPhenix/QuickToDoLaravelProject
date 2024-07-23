@@ -6,7 +6,7 @@
     @endguest
     @auth
         <a href="/historic">Logs</a>
-        <a href="/taskboard">Task Board</a>
+        <a href="/boards">Boards</a>
         <a href="/logout">Logout</a>
     @endauth
 </nav>

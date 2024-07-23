@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\HistoricController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
@@ -23,4 +24,5 @@ Route::get('/login', [SessionController::class, 'index']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-route::get('/historic', [HistoricController::class, 'index'])->middleware('auth');
+Route::get('/historic', [HistoricController::class, 'index'])->middleware('auth');
+Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');
