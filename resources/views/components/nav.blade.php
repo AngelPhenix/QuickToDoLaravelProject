@@ -2,7 +2,7 @@
     @guest
         <a href="/">Home</a>
         <a href="/register">Register</a>
-        <a href="/login">login<</a>
+        <a href="/login">Login</a>
     @endguest
     @auth
         <a href="/historic">Logs</a>
