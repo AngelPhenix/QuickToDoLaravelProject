@@ -17,4 +17,9 @@ class Historic extends Model
         'modified_at',
         'action'
     ];
+
+    public function board()
+    {
+        return $this->belongsTo(Board::class);
+    }
 }
