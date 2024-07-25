@@ -34,7 +34,7 @@ class TaskController extends Controller
             'action' => "completed"
         ]);
 
-        return redirect('/taskboard');
+        return back();
     }
 
     public function store(Request $request, Board $board)
@@ -52,6 +52,7 @@ class TaskController extends Controller
             'modified_at' => now()->toDateTimeString(),
             'action' => "created"
         ]);
+        
         // Auth::user()->tasks()->create($attributes);
 
         return redirect('/board/' . $board->id);
@@ -67,6 +68,6 @@ class TaskController extends Controller
         ]);
 
         $task->delete();
-        return redirect('/taskboard');
+        return back();
     }
 }
