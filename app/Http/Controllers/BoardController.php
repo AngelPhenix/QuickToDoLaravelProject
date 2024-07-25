@@ -22,6 +22,13 @@ class BoardController extends Controller
         return view('board.create');
     }
 
+    public function show(Board $id)
+    {
+        return view('board.show', [
+            'board' => $id
+        ]);
+    }
+
     public function store(Request $request)
     {
         $attributes = $request->validate([

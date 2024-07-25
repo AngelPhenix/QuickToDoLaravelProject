@@ -20,6 +20,7 @@ Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middl
 Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');
 Route::get('/board_create', [BoardController::class, 'create'])->middleware('auth');
 Route::post('/board', [BoardController::class, 'store'])->middleware('auth');
+Route::get('/board/{id}', [BoardController::class, 'show'])->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'create']);
