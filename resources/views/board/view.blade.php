@@ -1,7 +1,7 @@
 <x-layout>
-    @foreach ($boards as $board)
-        <div>
-            <a href="/board/">{{ $board->name }}</a>
-        </div>
-    @endforeach
+    <div class="grid lg:grid-cols-4 gap-5">
+        @foreach ($boards as $board)
+            <a class="text-2xl flex justify-center items-center bg-slate-500 w-[350px] h-[350px] hover:bg-slate-600" href="/board/{{ $board->id }}">{{ $board->name }}</a>
+        @endforeach
+    </div>
 </x-layout>
