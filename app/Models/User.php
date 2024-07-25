@@ -46,8 +46,18 @@ class User extends Authenticatable
         ];
     }
 
-    public function tasks(): HasMany
+    // public function tasks(): HasMany
+    // {
+    //     return $this->hasMany(Task::class);
+    // }
+
+    public function ownerBoards()
     {
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Board::class, 'owner_id');
+    }
+
+    public function boards()
+    {
+        return $this->belongsToMany(Board::class);
     }
 }
