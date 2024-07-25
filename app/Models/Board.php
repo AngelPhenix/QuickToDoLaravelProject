@@ -12,7 +12,21 @@ class Board extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
-        'owner'
+        'name'
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
