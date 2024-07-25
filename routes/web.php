@@ -12,7 +12,7 @@ Route::get('/', function() {
     return view('welcome');
 });
 
-Route::post('/post_task', [TaskController::class, 'store'])->middleware('auth');
+Route::post('/post_task/{id}', [TaskController::class, 'store'])->middleware('auth');
 Route::delete('/delete_task/{task}', [TaskController::class, 'destroy'])->middleware('auth');
 Route::get('/taskboard', [TaskController::class, 'index'])->middleware('auth');
 Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth');

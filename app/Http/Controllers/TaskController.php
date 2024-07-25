@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Board;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Historic;
@@ -36,15 +37,17 @@ class TaskController extends Controller
         return redirect('/taskboard');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Board $id)
     {
         $attributes = $request->validate([
             'name' => ['required'],
         ]);
 
-        Auth::user()->tasks()->create($attributes);
+        $attributes['board_id'] = $id->id;
+        Task::create($attributes);
+        // Auth::user()->tasks()->create($attributes);
 
-        return redirect('/taskboard');
+        return redirect('/board/' . $id->id);
     }
 
     public function destroy(Task $task)
