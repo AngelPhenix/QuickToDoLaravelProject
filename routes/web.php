@@ -17,7 +17,7 @@ Route::delete('/delete_task/{task}', [TaskController::class, 'destroy'])->middle
 Route::get('/taskboard', [TaskController::class, 'index'])->middleware('auth');
 Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth');
 
-Route::get('/board_create', [BoardController::class, 'create']);
+Route::get('/board_create', [BoardController::class, 'create'])->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'create']);
