@@ -37,17 +37,24 @@ class TaskController extends Controller
         return redirect('/taskboard');
     }
 
-    public function store(Request $request, Board $id)
+    public function store(Request $request, Board $board)
     {
         $attributes = $request->validate([
             'name' => ['required'],
         ]);
 
-        $attributes['board_id'] = $id->id;
+        $attributes['board_id'] = $board->id;
         Task::create($attributes);
+
+        Historic::create([
+            'task_name' => $attributes['name'],
+            'modified_by' => Auth::user()->username,
+            'modified_at' => now()->toDateTimeString(),
+            'action' => "created"
+        ]);
         // Auth::user()->tasks()->create($attributes);
 
-        return redirect('/board/' . $id->id);
+        return redirect('/board/' . $board->id);
     }
 
     public function destroy(Task $task)
