@@ -10,4 +10,9 @@ class BoardController extends Controller
     {
         return view('board.view');
     }
+
+    public function create()
+    {
+        return view('board.create');
+    }
 }
