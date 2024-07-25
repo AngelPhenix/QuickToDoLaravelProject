@@ -1,3 +1,7 @@
 <x-layout>
-    <h1>Board's Page !</h1>
+    @foreach ($boards as $board)
+        <div>
+            <a href="/board/">{{ $board->name }}</a>
+        </div>
+    @endforeach
 </x-layout>

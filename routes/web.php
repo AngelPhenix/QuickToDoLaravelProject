@@ -17,6 +17,7 @@ Route::delete('/delete_task/{task}', [TaskController::class, 'destroy'])->middle
 Route::get('/taskboard', [TaskController::class, 'index'])->middleware('auth');
 Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth');
 
+Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');
 Route::get('/board_create', [BoardController::class, 'create'])->middleware('auth');
 Route::post('/board', [BoardController::class, 'store'])->middleware('auth');
 
@@ -28,4 +29,3 @@ Route::post('/login', [SessionController::class, 'store']);
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::get('/historic', [HistoricController::class, 'index'])->middleware('auth');
-Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');

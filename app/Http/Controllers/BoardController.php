@@ -10,7 +10,11 @@ class BoardController extends Controller
 {
     public function index()
     {
-        return view('board.view');
+        $boards = Auth::user()->boards;
+
+        return view('board.view', [
+            'boards' => $boards
+        ]);
     }
 
     public function create()
