@@ -12,7 +12,8 @@ class Board extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
+        'name',
+        'owner_id'
     ];
 
     public function tasks()
