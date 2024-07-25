@@ -13,10 +13,10 @@ class Task extends Model
         'name'
     ];
 
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function board()
     {
