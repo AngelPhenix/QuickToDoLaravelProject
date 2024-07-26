@@ -14,7 +14,6 @@ Route::get('/', function() {
 
 Route::post('/post_task/{board}', [TaskController::class, 'store'])->middleware('auth');
 Route::delete('/delete_task/{task}', [TaskController::class, 'destroy'])->middleware('auth');
-Route::get('/taskboard', [TaskController::class, 'index'])->middleware('auth');
 Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth');
 
 Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');

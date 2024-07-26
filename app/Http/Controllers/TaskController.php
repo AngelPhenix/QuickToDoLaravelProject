@@ -11,17 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    public function index()
-    {
-        $user = Auth::user();
-        $tasks = $user->tasks;
-
-        return view('board.taskboard', [
-            'tasks' => $tasks,
-            'user' => $user
-        ]);
-    }
-
     public function update(Task $task)
     {
         $task->is_completed = true;
