@@ -32,7 +32,7 @@ class BoardController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'name' => ['required']
+            'name' => ['required', 'max:80']
         ]);
 
         // Adding the ID of the current logged in user as "owner_id"
