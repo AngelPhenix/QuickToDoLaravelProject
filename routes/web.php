@@ -19,7 +19,7 @@ Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middl
 Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');
 Route::get('/board_create', [BoardController::class, 'create'])->middleware('auth');
 Route::post('/board', [BoardController::class, 'store'])->middleware('auth');
-Route::get('/board/{id}', [BoardController::class, 'show'])->middleware(['auth', 'can:view,board']);
+Route::get('/board/{board}', [BoardController::class, 'show'])->middleware(['auth', 'can:view,board']);
 Route::delete('/delete_board/{board}', [BoardController::class, 'destroy'])->middleware(['auth', 'can:delete,board']);
 
 Route::get('/register', [RegisterController::class, 'index']);

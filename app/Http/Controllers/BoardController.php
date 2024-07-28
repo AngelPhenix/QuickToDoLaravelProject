@@ -24,10 +24,10 @@ class BoardController extends Controller
         return view('board.create');
     }
 
-    public function show(Board $id)
+    public function show(Board $board)
     {
         return view('board.show', [
-            'board' => $id
+            'board' => $board
         ]);
     }
 
