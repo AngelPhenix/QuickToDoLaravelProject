@@ -16,7 +16,7 @@ class BoardPolicy
      */
     public function view(User $user, Board $board): bool
     {
-        return $board->owner_id == $user->id;
+        return $board->users->contains($user);
     }
 
     /**
@@ -24,7 +24,6 @@ class BoardPolicy
      */
     public function update(User $user, Board $board): bool
     {
-        dd('test2');
         return $board->owner_id == $user->id;
     }
 
@@ -33,7 +32,6 @@ class BoardPolicy
      */
     public function delete(User $user, Board $board): bool
     {
-        dd('test3');
         return $board->owner_id == $user->id;
     }
 }
