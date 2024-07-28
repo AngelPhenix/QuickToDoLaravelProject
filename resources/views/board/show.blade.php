@@ -1,11 +1,12 @@
 <x-layout>
     <div class="flex gap-x-5 pb-2">
-        <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">
-            @csrf
-            @method('DELETE')
-            <button class="bg-red-500 px-4 rounded">Delete</button>
-        </form>
-    
+        @can('view,board')
+            <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">
+                @csrf
+                @method('DELETE')
+                <button class="bg-red-500 px-4 rounded">Delete</button>
+            </form>
+        @endcan
         <h1 class="text-4xl">{{ $board->name }}</h1>
     </div>
     <p class="text-sm pb-10">Admin rights to : {{$board->owner->username}}</p>
