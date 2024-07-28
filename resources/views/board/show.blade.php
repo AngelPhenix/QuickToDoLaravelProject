@@ -1,6 +1,6 @@
 <x-layout>
     <div class="flex gap-x-5 pb-2">
-        @can('view,board')
+        @can('view', $board)
             <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">
                 @csrf
                 @method('DELETE')
