@@ -23,4 +23,9 @@ class Task extends Model
     {
         return $this->belongsTo(Board::class);
     }
+
+    public function label()
+    {
+        return $this->hasMany(Label::class);
+    }
 }
