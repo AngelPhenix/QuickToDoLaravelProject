@@ -29,4 +29,5 @@ Route::get('/login', [SessionController::class, 'index']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-Route::get('/historic', [HistoricController::class, 'index'])->middleware('auth');
+// Route::get('/historic', [HistoricController::class, 'index'])->middleware('auth');
+Route::get('/historic/board/{board}', [HistoricController::class, 'index'])->middleware('auth');

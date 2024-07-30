@@ -8,7 +8,7 @@
     <title>Todo App</title>
 </head>
 <body class="bg-[#232326] h-full text-white p-3">
-    <x-nav />
+    <x-nav :board='$board ?? null'/>
     <div class="flex flex-col items-center justify-center">
         {{ $slot }}
     </div>

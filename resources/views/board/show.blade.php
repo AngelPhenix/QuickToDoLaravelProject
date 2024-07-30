@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :board="$board ?? null">
     <div class="flex gap-x-5 pb-2">
         @can('delete', $board)
             <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">

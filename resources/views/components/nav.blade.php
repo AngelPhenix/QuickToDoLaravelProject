@@ -1,3 +1,5 @@
+@props(['board'])
+
 <nav class="flex justify-between mb-8 mx-20">
     @guest
         <a href="/">Home</a>
@@ -6,7 +8,10 @@
     @endguest
     @auth
         <div class="flex gap-x-5">
-            <a href="/historic">Logs</a>
+            @if (isset($board))
+            <a href="/historic/board/{{$board->id}}">Logs</a>
+            @endif
+
             <a href="/boards">Boards</a>
             <a href="/logout">Logout</a>
         </div>
