@@ -45,6 +45,7 @@ class TaskController extends Controller
     {
         Historic::create([
             'task_name' => $task->name,
+            'board_id' => $task->board_id,
             'modified_by' => Auth::user()->username,
             'modified_at' => now()->toDateTimeString(),
             'action' => "deleted"

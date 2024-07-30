@@ -2,9 +2,9 @@
     <ul>
         @foreach ($historicData as $data)
             @if ($data->action == "completed")
-            <li>"{{$data->task_name}}" has been modified by <u>{{$data->modified_by}}</u> at [{{ $data->modified_at }}] into the status : <b class="text-green-500">{{ $data->action }}</b></li>
+            <li class="text-green-500"><b>{{$data->modified_by}}</b> has done "{{$data->task_name}}" the [{{ $data->modified_at }}]</b></li>
             @else
-            <li>"{{$data->task_name}}" has been modified by <u>{{$data->modified_by}}</u> at [{{ $data->modified_at }}] into the status : <b class="text-red-500">{{ $data->action }}</b></li>
+            <li class="text-red-500"><b>{{$data->modified_by}}</b> has deleted "{{$data->task_name}}" the [{{ $data->modified_at }}]</b></li>
             @endif
         @endforeach
     </ul>
