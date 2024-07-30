@@ -25,10 +25,11 @@
                 @if (!$task->is_completed)
                     <li class="w-full flex">
 
-                        <form class="flex flex-grow" method="post" action="/task_completed/{{ $task->id }}">
+                        <form class="flex flex-grow bg-slate-700 pl-2" method="post" action="/task_completed/{{ $task->id }}">
                             @csrf
                             @method('PATCH')
-                            <button class="pl-4 bg-slate-700 flex flex-grow text-left hover:bg-green-600 [overflow-wrap:anywhere]">{{ $task-> name }}</button>
+                            <input type="checkbox" name="is_completed" id="is_completed" {{ $task->is_completed ? 'checked' : ''}} onchange="this.form.submit()">
+                            <span class="pl-4 bg-slate-700 flex flex-grow text-left [overflow-wrap:anywhere]">{{ $task->name }}</span>
                         </form>
 
                         <form class="bg-slate-700 text-center flex align-middle" method="post" action="/delete_task/{{ $task->id }}">
