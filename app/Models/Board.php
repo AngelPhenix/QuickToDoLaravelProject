@@ -30,4 +30,9 @@ class Board extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function historic()
+    {
+        return $this->hasOne(Historic::class);
+    }
 }

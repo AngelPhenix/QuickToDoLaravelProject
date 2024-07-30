@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('historics', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('board_id')->constrained()->cascadeOnDelete();
             $table->string('task_name');
             $table->string('modified_by');
             $table->string('modified_at');
