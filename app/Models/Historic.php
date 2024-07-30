@@ -13,6 +13,7 @@ class Historic extends Model
 
     protected $fillable = [
         'task_name',
+        'board_id',
         'modified_by',
         'modified_at',
         'action'
