@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    public function update(Task $task)
+    public function update(Request $request, Task $task)
     {
-        $task->is_completed = true;
+        $task->is_completed = $request->has('is_completed');
+
         $task->save();
 
         Historic::create([

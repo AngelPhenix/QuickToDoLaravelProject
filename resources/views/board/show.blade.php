@@ -22,7 +22,6 @@
         <p class="bg-cyan-950 text-center px-3 py-2 mb-3"> TASKS </p>
             <ul class="flex flex-col gap-y-1">
             @foreach ($board->tasks as $task)
-                @if (!$task->is_completed)
                     <li class="w-full flex">
 
                         <form class="flex flex-grow bg-slate-700 pl-2" method="post" action="/task_completed/{{ $task->id }}">
@@ -39,7 +38,6 @@
                         </form>
 
                     </li>
-                @endif
             @endforeach
             </ul> 
     </div>
