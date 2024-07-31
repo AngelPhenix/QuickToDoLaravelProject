@@ -18,26 +18,28 @@
         <button class="bg-slate-600 py-1 px-3">Add Task</button>
     </form>
 
-    <div class="mt-10 w-[308px]">
+    <div class="mt-10 w-[650px]">
         <p class="bg-cyan-950 text-center px-3 py-2 mb-3"> TASKS </p>
             <ul class="flex flex-col gap-y-1">
-            @foreach ($board->tasks as $task)
-                    <li class="w-full flex">
+            @foreach ($tasks as $task)
+                    <li class="w-full flex h-[56px]">
 
-                        <form class="flex flex-grow bg-slate-700 pl-2 {{$task->is_completed ? 'bg-slate-800' : ''}} " method="post" action="/task_completed/{{ $task->id }}">
+                        <form class="flex bg-slate-700 pl-2 {{$task->is_completed ? 'bg-slate-800' : ''}} " method="post" action="/task_completed/{{ $task->id }}">
                             @csrf
                             @method('PATCH')
                             <input type="checkbox" name="is_completed" id="is_completed" {{ $task->is_completed ? 'checked' : ''}} onchange="this.form.submit()">
-                            <span class="pl-4 bg-slate-700 flex flex-grow text-left [overflow-wrap:anywhere] {{$task->is_completed ? 'line-through bg-slate-800' : ''}}">{{ $task->name }}</span>
                         </form>
-
+                        <div class="flex flex-col flex-grow">
+                            <p class="pl-4 bg-slate-700 flex flex-grow text-left [overflow-wrap:anywhere] {{$task->is_completed ? 'line-through bg-slate-800' : ''}}"><b>{{ $task->name }}</b></p>
+                            <p class="pl-4 bg-slate-700 flex flex-grow text-left [overflow-wrap:anywhere] {{$task->is_completed ? 'line-through bg-slate-800' : ''}}">{{ $task->tags }}</p>
+                        </div>
                         <form class="bg-slate-700 text-center flex align-middle {{$task->is_completed ? 'bg-slate-800' : ''}}" method="post" action="/delete_task/{{ $task->id }}">
                             @csrf
                             @method('DELETE')
                             <button class="px-4 items-center hover:bg-red-600">X</button>
                         </form>
 
-                        <x-modal />
+                        {{-- <x-modal /> --}}
                     </li>
             @endforeach
             </ul> 

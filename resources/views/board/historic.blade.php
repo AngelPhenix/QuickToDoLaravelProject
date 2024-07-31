@@ -5,7 +5,7 @@
                 @if ($data->action == "done")
                 <li class="text-green-500"><b>{{$data->modified_by}}</b> has done <u>{{$data->task_name}}</u> the [{{ $data->modified_at }}]</b></li>
                 @elseif ($data->action == "undone")
-                <li class="text-blue-500"><b>{{$data->modified_by}}</b> has done <u>{{$data->task_name}}</u> the [{{ $data->modified_at }}]</b></li>
+                <li class="text-blue-500"><b>{{$data->modified_by}}</b> has undone <u>{{$data->task_name}}</u> the [{{ $data->modified_at }}]</b></li>
                 @else
                 <li class="text-red-500"><b>{{$data->modified_by}}</b> has deleted <u>{{$data->task_name}}</u> the [{{ $data->modified_at }}]</b></li>
                 @endif

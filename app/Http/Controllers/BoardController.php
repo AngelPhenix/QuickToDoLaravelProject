@@ -26,8 +26,11 @@ class BoardController extends Controller
 
     public function show(Board $board)
     {
+        $tasks = $board->tasks->sortBy('is_completed');
+
         return view('board.show', [
-            'board' => $board
+            'board' => $board,
+            'tasks' => $tasks
         ]);
     }
 
