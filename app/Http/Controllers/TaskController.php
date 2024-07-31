@@ -13,7 +13,14 @@ class TaskController extends Controller
 {
     public function update(Request $request, Task $task)
     {
+        $action = '';
         $task->is_completed = $request->has('is_completed');
+        
+        if($task->is_completed){
+            $action = "done";
+        }else{
+            $action = "undone";
+        }
 
         $task->save();
 
@@ -22,7 +29,7 @@ class TaskController extends Controller
             'board_id' => $task->board_id,
             'modified_by' => Auth::user()->username,
             'modified_at' => now()->toDateTimeString(),
-            'action' => "completed",
+            'action' => $action,
         ]);
 
         return back();
