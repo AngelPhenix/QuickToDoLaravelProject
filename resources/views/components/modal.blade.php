@@ -14,6 +14,10 @@
                 @csrf
                 <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4">
 
+                @foreach ($task->labels as $label)
+                    <p>{{ $label->name }}</p>
+                @endforeach
+
                 <div class="flex justify-end">
                     <button type="button" @click="open = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
                     <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Add</button>
