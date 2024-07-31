@@ -36,7 +36,7 @@
                                 @foreach ($task->labels as $label)
                                     <span class="bg-yellow-600 text-white px-4 rounded mr-1">{{$label->name}}</span>
                                 @endforeach
-                                <x-modal :task="$task" />
+                                <x-modal :task="$task" :labels="$labels" />
                             </div>
                         </div>
 

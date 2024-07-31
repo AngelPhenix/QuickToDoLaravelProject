@@ -1,4 +1,4 @@
-@props(['task'])
+@props(['task', 'labels'])
 
 <div x-data="{ open: false }">
     <!-- Button to open the modal -->
@@ -14,7 +14,7 @@
                 @csrf
                 <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4">
 
-                @foreach ($user->labels as $label)
+                @foreach ($labels as $label)
                     <p>{{ $label->name }}</p>
                 @endforeach
 

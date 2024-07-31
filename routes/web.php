@@ -32,4 +32,4 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 
 // Route::get('/historic', [HistoricController::class, 'index'])->middleware('auth');
 Route::get('/historic/board/{board}', [HistoricController::class, 'index'])->middleware('auth');
-Route::post('/add_label/{task}', [LabelController::class, 'update'])->middleware('auth');
+Route::post('/add_label/{task}', [LabelController::class, 'store'])->middleware('auth');
