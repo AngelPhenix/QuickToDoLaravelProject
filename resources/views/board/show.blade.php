@@ -33,6 +33,9 @@
                         <div class="flex flex-col flex-grow gap-y-0 content-start">
                             <p class="pl-4 bg-slate-700 flex flex-grow items-end text-left [overflow-wrap:anywhere] {{$task->is_completed ? 'line-through bg-slate-800' : ''}}"><b>{{ $task->name }}</b></p>
                             <div class="flex flex-grow items-start text-sm bg-slate-700 pl-4 {{$task->is_completed ? 'bg-slate-800' : ''}}">
+                                @foreach ($task->labels as $label)
+                                    <span class="bg-yellow-600 text-white px-4 rounded mr-1">{{$label->name}}</span>
+                                @endforeach
                                 <x-modal :task="$task" />
                             </div>
                         </div>
