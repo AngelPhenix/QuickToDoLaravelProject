@@ -37,6 +37,7 @@
                             <button class="px-4 items-center hover:bg-red-600">X</button>
                         </form>
 
+                        <x-modal />
                     </li>
             @endforeach
             </ul> 
