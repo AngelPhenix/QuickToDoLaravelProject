@@ -32,11 +32,9 @@
 
                         <div class="flex flex-col flex-grow gap-y-0 content-start">
                             <p class="pl-4 bg-slate-700 flex flex-grow items-end text-left [overflow-wrap:anywhere] {{$task->is_completed ? 'line-through bg-slate-800' : ''}}"><b>{{ $task->name }}</b></p>
-                            <form class="flex flex-grow items-start text-sm bg-slate-700 pl-4 {{$task->is_completed ? 'bg-slate-800' : ''}} " method="post" action="/add_label/{{ $task->id }}">
-                                @csrf
-                                @method('PATCH')
+                            <div class="flex flex-grow items-start text-sm bg-slate-700 pl-4 {{$task->is_completed ? 'bg-slate-800' : ''}}">
                                 <x-modal />
-                            </form>
+                            </div>
                         </div>
 
                         <form class="bg-slate-700 text-center flex align-middle {{$task->is_completed ? 'bg-slate-800' : ''}}" method="post" action="/delete_task/{{ $task->id }}">

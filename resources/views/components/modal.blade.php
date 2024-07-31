@@ -1,13 +1,12 @@
 <div x-data="{ open: false }">
     <!-- Button to open the modal -->
-    <button @click="open = true" class="bg-blue-500 text-white px-4 rounded">label
-    </button>
+    <button @click="open = true" class="bg-blue-500 text-white px-4 rounded">label</button>
 
     <!-- Modal background -->
     <div x-show="open" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
         <!-- Modal content -->
         <div @click.away="open = false" class="bg-white text-black p-6 rounded shadow-lg">
-            <h2 class="text-lg font-semibold mb-4">Edit Task</h2>
+            <h2 class="text-lg font-semibold mb-4">Add Labels</h2>
             <!-- Your form or content here -->
             <form method="POST" action="/edit-task">
                 @csrf
