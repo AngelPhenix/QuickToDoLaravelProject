@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\HistoricController;
+use App\Http\Controllers\LabelController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TaskController;
@@ -31,3 +32,4 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 
 // Route::get('/historic', [HistoricController::class, 'index'])->middleware('auth');
 Route::get('/historic/board/{board}', [HistoricController::class, 'index'])->middleware('auth');
+Route::post('/add_label/{task}', [LabelController::class, 'update'])->middleware('auth');
