@@ -1,6 +1,6 @@
 <div x-data="{ open: false }">
     <!-- Button to open the modal -->
-    <button @click="open = true" class="bg-blue-500 text-white px-4 py-2 rounded">Labels
+    <button @click="open = true" class="bg-blue-500 text-white px-4 rounded">label
     </button>
 
     <!-- Modal background -->
