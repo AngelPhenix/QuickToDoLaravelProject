@@ -28,7 +28,7 @@
                             @csrf
                             @method('PATCH')
                             <input type="checkbox" name="is_completed" id="is_completed" {{ $task->is_completed ? 'checked' : ''}} onchange="this.form.submit()">
-                            <span class="pl-4 bg-slate-700 flex flex-grow text-left [overflow-wrap:anywhere]">{{ $task->name }}</span>
+                            <span class="pl-4 bg-slate-700 flex flex-grow text-left [overflow-wrap:anywhere] {{$task->is_completed ? 'line-through' : ''}}">{{ $task->name }}</span>
                         </form>
 
                         <form class="bg-slate-700 text-center flex align-middle" method="post" action="/delete_task/{{ $task->id }}">
