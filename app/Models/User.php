@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Board::class);
     }
+
+    public function labels()
+    {
+        return $this->hasMany(Label::class);
+    }
 }

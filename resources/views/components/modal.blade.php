@@ -14,7 +14,7 @@
                 @csrf
                 <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4">
 
-                @foreach ($task->labels as $label)
+                @foreach ($user->labels as $label)
                     <p>{{ $label->name }}</p>
                 @endforeach
 

@@ -28,9 +28,12 @@ class BoardController extends Controller
     {
         $tasks = $board->tasks->sortBy('is_completed');
 
+        $labels = Auth::user()->labels;
+
         return view('board.show', [
             'board' => $board,
-            'tasks' => $tasks
+            'tasks' => $tasks,
+            'labels' => $labels
         ]);
     }
 
