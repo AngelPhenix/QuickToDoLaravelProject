@@ -12,8 +12,8 @@
             <!-- Your form or content here -->
             <form method="POST" action="/add_label/{{$task->id}}">
                 @csrf
-                <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4">
-                <input type="color" name="color" class="mr-2">
+                <input type="text" id="name" name="name" class="p-2 border rounded mb-4">
+                <input type="color" name="color" class="m-2 border rounded mb-4">
 
                 <div class="flex justify-end">
                     <button type="button" @click="open = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
@@ -21,12 +21,15 @@
                 </div>
             </form>
 
+            <h2 class="text-sm font-semibold mb-4">Labels not used :</h2>
             @foreach ($labels as $label)
-            <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}">
-                @csrf
-                @method('PATCH')
-                <button type="submit" class="bg-blue-500 text-white px-2 rounded">{{ $label->name }}</button>
-            </form>
+                @if (!$task->labels->contains($label))
+                    <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="inline-block">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="bg-[{{$label->color}}]/25 text-white px-2 rounded ">{{ $label->name }}</button>
+                    </form>
+                @endif
             @endforeach
         </div>
     </div>
