@@ -14,25 +14,19 @@
                 @csrf
                 <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4">
 
-                <form method="POST" action="/update_labels/{{ $task->id }}">
-                    @csrf
-                    @method('PATCH')
-                    <div class="mb-4">
-                        @foreach ($labels as $label)
-                            <label class="block">
-                                <input type="checkbox" name="labels[]" value="{{ $label->id }}" {{ $task->labels->contains($label) ? 'checked' : '' }}>
-                                {{ $label->name }}
-                            </label>
-                        @endforeach
-                    </div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-                </form>
-
                 <div class="flex justify-end">
                     <button type="button" @click="open = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
                     <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Add</button>
                 </div>
             </form>
+
+            @foreach ($labels as $label)
+            <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="bg-blue-500 text-white px-2 rounded">{{ $label->name }}</button>
+            </form>
+            @endforeach
         </div>
     </div>
 </div>
