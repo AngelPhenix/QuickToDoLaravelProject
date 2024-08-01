@@ -13,11 +13,13 @@ class LabelController extends Controller
     {
         $attributes = $request->validate([
             'name' => ['required'],
+            'color' => ['required']
         ]);
 
         $attributes['user_id'] = Auth::user()->id;
 
         $label = Label::create($attributes);
+
         $task->labels()->attach($label);
 
         return redirect()->back();
