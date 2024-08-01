@@ -15,7 +15,10 @@
                 <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4">
 
                 @foreach ($labels as $label)
-                    <p>{{ $label->name }}</p>
+                    <form method="post" action="/add_label/{{$task->id}}/{{$label->id}}">
+                        @csrf
+                        <button class="bg-blue-500 text-white px-2 rounded">{{ $label->name }}</button>
+                    </form>
                 @endforeach
 
                 <div class="flex justify-end">
