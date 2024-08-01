@@ -13,6 +13,7 @@
             <form method="POST" action="/add_label/{{$task->id}}">
                 @csrf
                 <input type="text" id="name" name="name" class="w-full p-2 border rounded mb-4">
+                <input type="color" name="color" class="mr-2">
 
                 <div class="flex justify-end">
                     <button type="button" @click="open = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
