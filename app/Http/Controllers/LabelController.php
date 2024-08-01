@@ -22,4 +22,13 @@ class LabelController extends Controller
 
         return redirect()->back();
     }
+
+    public function update(Task $task, Label $label)
+    {
+        if(!in_array($label->name, $task->labels->all())) {
+            $task->labels()->attach($label);
+        }
+
+        return redirect()->back();
+    }
 }
