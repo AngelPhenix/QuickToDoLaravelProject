@@ -23,11 +23,13 @@ class LabelController extends Controller
         return redirect()->back();
     }
 
-    public function update(Task $task, Label $label)
+    public function update(Request $request, Task $task)
     {
-        if(!in_array($label->name, $task->labels->all())) {
-            $task->labels()->attach($label);
-        }
+        $attributes = $request->validate([
+            'labels' => ['array']
+        ]);
+
+        $task->labels()->sync($attributes);
 
         return redirect()->back();
     }
