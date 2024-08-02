@@ -36,9 +36,9 @@ class LabelController extends Controller
         return redirect()->back();
     }
 
-    public function deleteFromTask(Task $task, Label $label)
+    public function deleteFromTask(Label $label, Task $task)
     {
-        $task->labels->detach($label);
+        $task->labels()->detach($label);
 
         return redirect()->back();
     }
