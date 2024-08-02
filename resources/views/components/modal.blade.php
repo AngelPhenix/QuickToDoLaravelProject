@@ -10,7 +10,7 @@
         <div @click.away="open = false" class="bg-slate-500 text-black p-6 rounded shadow-lg max-w-md">
             <h2 class="text-lg font-semibold">Add Labels</h2>
             <!-- Your form or content here -->
-            <form id="form_add" method="POST" action="/add_label/{{$task->id}}" class="flex items-center gap-x-2">
+            <form id="form_add_{{$task->id}}" method="POST" action="/add_label/{{$task->id}}" class="flex items-center gap-x-2">
                 @csrf
                 <input type="text" id="name" name="name" class="p-2 border border-gray-300 rounded-md h-10" placeholder="Label name">
                 <input type="color" name="color" class="border border-gray-300 rounded-md h-10 w-12">
@@ -35,7 +35,7 @@
 
             <div class="flex justify-end mt-4">
                 <button type="button" @click="open = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
-                <button type="submit" form="form_add" class="bg-green-500 text-white px-4 py-2 rounded">Add</button>
+                <button type="submit" form="form_add_{{$task->id}}" class="bg-green-500 text-white px-4 py-2 rounded">Add</button>
             </div>
         </div>
     </div>
