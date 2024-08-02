@@ -34,3 +34,4 @@ Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth')
 Route::get('/historic/board/{board}', [HistoricController::class, 'index'])->middleware('auth');
 Route::post('/add_label/{task}', [LabelController::class, 'store'])->middleware('auth');
 Route::patch('/update_task/{task}/label/{label}', [LabelController::class, 'update'])->middleware('auth');
+Route::patch('delete_label/{label}/from_task/{task}', [LabelController::class, 'deleteFromTask'])->middleware('auth');
