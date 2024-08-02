@@ -18,19 +18,19 @@
 
             <h2 class="text-sm font-semibold mb-1 mt-4"><u>Select to toggle :</u></h2>
             @foreach ($labels as $label)
-                {{-- @if (!$task->labels->contains($label))
-                    <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1">
+                @if (!$task->labels->contains($label))
+                    <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
                         @csrf
                         @method('PATCH')
                         <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded">{{ $label->name }}</button>
                     </form>
-                @endif --}}
+                @endif
 
-                <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
+                {{-- <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
                     @csrf
                     @method('PATCH')
                     <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
-                </form>
+                </form> --}}
             @endforeach
 
             <div class="flex justify-end mt-4">
