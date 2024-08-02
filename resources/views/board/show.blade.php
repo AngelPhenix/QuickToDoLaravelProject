@@ -37,7 +37,7 @@
                                     <form method="post" action="/delete_label/{{ $label->id }}/from_task/{{ $task->id }}">
                                         @csrf
                                         @method('PATCH')
-                                        <button class="bg-[{{$label->color}}]/50 text-white px-4 rounded mr-1">{{$label->name}}</button>
+                                        <button class="bg-[{{$label->color}}]/50 text-white px-4 rounded mr-1 hover:line-through">{{$label->name}}</button>
                                     </form>
                                 @endforeach
                                 <x-modal :task="$task" :labels="$labels" />

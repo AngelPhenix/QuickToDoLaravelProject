@@ -3,7 +3,7 @@
     <form class="flex flex-col" method="post" action="/board">
         @csrf
         <input class="text-black pl-2 py-1" type="text" name="name" id="name"/>
-        <x-form-error fieldname='name' />
+        <x-form-error fieldname='name'/>
 
         <button class="py-2" type="submit">Create</button>
     </form>
