@@ -22,7 +22,7 @@
         <p class="bg-cyan-950 text-center px-3 py-2 mb-3"> TASKS </p>
             <ul class="flex flex-col gap-y-1">
             @foreach ($tasks as $task)
-                    <li class="w-full flex h-[56px]">
+                    <li class="w-full flex">
 
                         <form class="flex bg-slate-700 pl-2 {{$task->is_completed ? 'bg-slate-800' : ''}} " method="post" action="/task_completed/{{ $task->id }}">
                             @csrf
@@ -30,9 +30,9 @@
                             <input type="checkbox" name="is_completed" id="is_completed" {{ $task->is_completed ? 'checked' : ''}} onchange="this.form.submit()">
                         </form>
 
-                        <div class="flex flex-col flex-grow gap-y-0 content-start">
-                            <p class="pl-4 bg-slate-700 flex flex-grow items-end text-left [overflow-wrap:anywhere] {{$task->is_completed ? 'line-through bg-slate-800' : ''}}"><b>{{ $task->name }}</b></p>
-                            <div class="flex flex-grow items-start text-sm bg-slate-700 pl-4 {{$task->is_completed ? 'bg-slate-800' : ''}}">
+                        <div class="flex flex-col flex-grow gap-y-0 content-start h-full">
+                            <p class="pl-4 bg-slate-700 flex items-center text-left overflow-wrap:anywhere {{$task->is_completed ? 'line-through bg-slate-800' : ''}}"><b>{{ $task->name }}</b></p>
+                            <div class="flex flex-wrap items-start text-sm bg-slate-700 pl-4 gap-y-1 pb-2 {{$task->is_completed ? 'bg-slate-800' : ''}}">
                                 @foreach ($task->labels as $label)
                                     <form method="post" action="/delete_label/{{ $label->id }}/from_task/{{ $task->id }}">
                                         @csrf
@@ -44,7 +44,7 @@
                             </div>
                         </div>
 
-                        <form class="bg-slate-700 text-center flex align-middle {{$task->is_completed ? 'bg-slate-800' : ''}}" method="post" action="/delete_task/{{ $task->id }}">
+                        <form class="bg-slate-700 text-center flex items-center {{$task->is_completed ? 'bg-slate-800' : ''}}" method="post" action="/delete_task/{{ $task->id }}">
                             @csrf
                             @method('DELETE')
                             <button class="px-4 items-center hover:bg-red-600">X</button>
