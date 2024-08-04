@@ -44,11 +44,12 @@
                             <p class="pl-4 bg-slate-700 flex items-center text-left overflow-wrap:anywhere {{$task->is_completed ? 'line-through bg-slate-800' : ''}}"><b>{{ $task->name }}</b></p>
                             <div class="flex flex-wrap items-start text-sm bg-slate-700 pl-4 gap-y-1 pb-2 {{$task->is_completed ? 'bg-slate-800' : ''}}">
                                 @foreach ($task->labels as $label)
-                                    <form method="post" action="/delete_label/{{ $label->id }}/from_task/{{ $task->id }}">
+                                    {{-- <form method="post" action="/delete_label/{{ $label->id }}/from_task/{{ $task->id }}">
                                         @csrf
                                         @method('PATCH')
                                         <button class="bg-[{{$label->color}}]/50 text-white px-4 rounded mr-1 hover:line-through">{{$label->name}}</button>
-                                    </form>
+                                    </form> --}}
+                                    <span class="bg-[{{$label->color}}]/50 text-white px-4 rounded mr-1">{{$label->name}}</span>
                                 @endforeach
                                 <x-modal :task="$task" :labels="$labels" />
                             </div>
