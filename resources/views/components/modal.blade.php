@@ -27,7 +27,7 @@
                     </form>
                 @endif --}}
 
-                <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
+                <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block overflow-wrap:anywhere">
                     @csrf
                     @method('PATCH')
                     <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>

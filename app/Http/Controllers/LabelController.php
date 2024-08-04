@@ -12,7 +12,7 @@ class LabelController extends Controller
     public function store(Request $request, Task $task)
     {
         $attributes = $request->validate([
-            'name' => ['required'],
+            'name' => ['required', 'max:30'],
             'color' => ['required']
         ]);
 
