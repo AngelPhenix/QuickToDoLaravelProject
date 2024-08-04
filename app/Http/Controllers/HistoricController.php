@@ -12,7 +12,7 @@ class HistoricController extends Controller
     {
         $historicData = Historic::all();
 
-        return view('board.historic', [
+        return view('historic.view', [
             'historicData' => $historicData,
             'board' => $board
         ]);

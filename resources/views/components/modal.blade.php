@@ -31,7 +31,7 @@
                     <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="bg-neutral-600 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
+                        <button type="submit" class="bg-neutral-700 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
                     </form>
                 @else
                     <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">

@@ -4,13 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Board;
 use App\Models\Task;
-use App\Models\User;
 use App\Models\Historic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    public function show(Board $board)
+    {
+        $tasks = $board->tasks->sortBy('is_completed');
+
+        $labels = Auth::user()->labels;
+
+        return view('task.show', [
+            'board' => $board,
+            'tasks' => $tasks,
+            'labels' => $labels
+        ]);
+    }
+
     public function update(Request $request, Task $task)
     {
         $action = '';

@@ -24,19 +24,6 @@ class BoardController extends Controller
         return view('board.create');
     }
 
-    public function show(Board $board)
-    {
-        $tasks = $board->tasks->sortBy('is_completed');
-
-        $labels = Auth::user()->labels;
-
-        return view('board.show', [
-            'board' => $board,
-            'tasks' => $tasks,
-            'labels' => $labels
-        ]);
-    }
-
     public function store(Request $request)
     {
         $attributes = $request->validate([
