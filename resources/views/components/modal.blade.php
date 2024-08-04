@@ -7,7 +7,7 @@
     <!-- Modal background -->
     <div x-show="open" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
         <!-- Modal content -->
-        <div @click.away="open = false" class="bg-slate-500 text-black p-6 rounded shadow-lg max-w-md">
+        <div @click.away="open = false" class="bg-slate-500 text-black p-6 rounded shadow-lg max-w-[290px]">
             <h2 class="text-lg font-semibold">Add Labels</h2>
             <!-- Your form or content here -->
             <form id="form_add_{{$task->id}}" method="POST" action="/add_label/{{$task->id}}" class="flex items-center gap-x-2">
@@ -19,19 +19,19 @@
             <h2 class="text-sm font-semibold mb-1 mt-4"><u>Select to add :</u></h2>
             <div class="max-w-md">
                 @foreach ($labels as $label)
-                @if (!$task->labels->contains($label))
+                {{-- @if (!$task->labels->contains($label))
                     <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
                         @csrf
                         @method('PATCH')
                         <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
                     </form>
-                @endif
+                @endif --}}
 
-                {{-- <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
+                <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
                     @csrf
                     @method('PATCH')
                     <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
-                </form> --}}
+                </form>
             @endforeach
             </div>
 
