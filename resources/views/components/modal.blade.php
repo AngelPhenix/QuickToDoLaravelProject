@@ -17,7 +17,8 @@
             </form>
 
             <h2 class="text-sm font-semibold mb-1 mt-4"><u>Select to add :</u></h2>
-            @foreach ($labels as $label)
+            <div class="max-w-md">
+                @foreach ($labels as $label)
                 @if (!$task->labels->contains($label))
                     <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
                         @csrf
@@ -32,6 +33,7 @@
                     <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
                 </form> --}}
             @endforeach
+            </div>
 
             <div class="flex justify-end mt-4">
                 <button type="button" @click="open = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
