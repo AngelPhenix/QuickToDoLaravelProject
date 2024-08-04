@@ -8,8 +8,18 @@
             </form>
         @endcan
         <h1 class="text-4xl">{{ $board->name }}</h1>
+        @can('addFriend', $board)
+            <form method="post" action="" class="flex gap-x-3">
+                @csrf
+                <button class="bg-blue-500 px-4 rounded">Add User</button>
+            </form>
+        @endcan
     </div>
-    <p class="text-sm pb-10">Admin rights to : {{$board->owner->username}}</p>
+    <p class="text-sm pb-2"><u>Admin rights to : {{$board->owner->username}}</u></p>
+    <p class=" text-sm">Users with rights to this board :</p>
+    <ul class="text-sm pb-10">
+        <li>None</li>
+    </ul>
 
     <form method="post" action="/post_task/{{$board->id}}" class="flex gap-x-3">
         @csrf
