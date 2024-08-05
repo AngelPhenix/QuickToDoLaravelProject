@@ -26,10 +26,15 @@
             </form>
         @endcan
     </div>
-    <p class="text-sm pb-2"><u>Admin rights to : {{$board->owner->username}}</u></p>
-    <p class=" text-sm">Users with rights to this board :</p>
+    <p class=" text-sm">Collaborators :</p>
     <ul class="text-sm pb-5">
-        <li>None</li>
+        @foreach ($board->users as $user)
+            @if ($user->username == $board->owner->username)
+                <li class="font-bold underline">{{ $user->username }}</li>
+            @else
+                <li>{{ $user->username }}</li>    
+            @endif
+        @endforeach
     </ul>
 
     <form method="post" action="/post_task/{{$board->id}}" class="flex gap-x-3">
