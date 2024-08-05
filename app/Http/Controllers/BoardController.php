@@ -57,7 +57,11 @@ class BoardController extends Controller
             return redirect()->back()->withErrors(['email_added' => "The mail doesn't corresponds to any user."]);
         }
 
-        $board->users()->attach($user);
+        if($board->users->doesntContain($user)) {
+            $board->users()->attach($user);
+        }else{
+            return redirect()->back()->withErrors(['user_added' => "This user is already a collaborator on this board"]);
+        }
 
         return redirect()->back();
     }
