@@ -21,7 +21,7 @@ Route::get('/board/{board}', [TaskController::class, 'show'])->middleware(['auth
 Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');
 Route::get('/board_create', [BoardController::class, 'create'])->middleware('auth');
 Route::post('/board', [BoardController::class, 'store'])->middleware('auth');
-Route::post('/board_addfriend/{board}', [BoardController::class, 'addFriend'])->middleware('auth');
+Route::post('/board_addfriend/{board}', [BoardController::class, 'addFriend'])->middleware(['auth', 'can:addFriend,board']);
 Route::delete('/delete_board/{board}', [BoardController::class, 'destroy'])->middleware(['auth', 'can:delete,board']);
 
 Route::get('/register', [RegisterController::class, 'index']);
