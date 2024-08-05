@@ -26,6 +26,7 @@ class BoardController extends Controller
         return view('board.create');
     }
 
+    // When board is created, add the owner to the board_user pivot table
     public function store(Request $request)
     {
         $attributes = $request->validate([
@@ -43,7 +44,8 @@ class BoardController extends Controller
         return redirect('/boards');
     }
 
-    public function addFriend(Request $request)
+    // When adding new collaborator, check for his email and add it to the board_user pivot table
+    public function addFriend(Request $request, Board $board)
     {
         $attributes = $request->validate([
             'mail' => ['required', 'email']
@@ -51,9 +53,13 @@ class BoardController extends Controller
 
         $user = User::where('email', $attributes['mail'])->first();
 
-        
+        if(!$user){
+            return redirect()->back()->withErrors(['email_added' => "The mail doesn't corresponds to any user."]);
+        }
 
-        dd($user);
+        $board->users()->attach($user);
+
+        return redirect()->back();
     }
 
     public function destroy(Board $board)
