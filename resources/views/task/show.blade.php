@@ -22,7 +22,7 @@
             <form method="post" action="/board_addfriend/{{$board->id}}" class="flex gap-x-3">
                 @csrf
                 <input class="text-black pl-1" id="mail" name="mail" type="text" placeholder="User's mail"/>
-                <button class="bg-blue-500 px-4 rounded">Add User</button>
+                <button class="bg-blue-500 px-4 rounded">Add Collaborator</button>
             </form>
         @endcan
     </div>

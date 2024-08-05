@@ -23,7 +23,7 @@ class BoardPolicy
      */
     public function update(User $user, Board $board): bool
     {
-        return $board->owner_id == $user->id;
+        return $board->users->contains($user);
     }
 
     /**
