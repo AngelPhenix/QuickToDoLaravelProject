@@ -41,9 +41,13 @@ class BoardController extends Controller
         return redirect('/boards');
     }
 
-    public function addFriend()
+    public function addFriend(Request $request)
     {
-        
+        $attributes = $request->validate([
+            'mail' => ['required', 'email']
+        ]);
+
+        dd('Test!');
     }
 
     public function destroy(Board $board)
