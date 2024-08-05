@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use function Pest\Laravel\delete;
 
@@ -47,7 +49,11 @@ class BoardController extends Controller
             'mail' => ['required', 'email']
         ]);
 
-        dd('Test!');
+        $user = User::where('email', $attributes['mail'])->first();
+
+        
+
+        dd($user);
     }
 
     public function destroy(Board $board)
