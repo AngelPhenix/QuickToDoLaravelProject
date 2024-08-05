@@ -1,5 +1,5 @@
 <x-layout :board="$board ?? null">
-    <div class="flex gap-x-5 pb-2">
+    <div class="flex gap-x-5 pb-5">
         @can('delete', $board)
             <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">
                 @csrf
@@ -9,15 +9,16 @@
         @endcan
         <h1 class="text-4xl">{{ $board->name }}</h1>
         @can('addFriend', $board)
-            <form method="post" action="" class="flex gap-x-3">
+            <form method="post" action="/board_addfriend" class="flex gap-x-3">
                 @csrf
+                <input class="text-black pl-1" id="mail" name="mail" type="text" placeholder="User's mail"/>
                 <button class="bg-blue-500 px-4 rounded">Add User</button>
             </form>
         @endcan
     </div>
     <p class="text-sm pb-2"><u>Admin rights to : {{$board->owner->username}}</u></p>
     <p class=" text-sm">Users with rights to this board :</p>
-    <ul class="text-sm pb-10">
+    <ul class="text-sm pb-5">
         <li>None</li>
     </ul>
 

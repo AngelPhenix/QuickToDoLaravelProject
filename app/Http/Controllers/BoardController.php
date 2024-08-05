@@ -41,6 +41,11 @@ class BoardController extends Controller
         return redirect('/boards');
     }
 
+    public function addFriend()
+    {
+        
+    }
+
     public function destroy(Board $board)
     {
         $board->delete();
