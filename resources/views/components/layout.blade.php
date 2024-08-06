@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.2.2/dist/cdn.min.js" defer></script>
     <title>Todo App</title>
 </head>
-<body class="bg-[#232326] h-full text-white pt-3">
+<body class="bg-[#232326] h-full text-white">
     <x-nav :board='$board ?? null'/>
 
     <!-- Sidebar -->

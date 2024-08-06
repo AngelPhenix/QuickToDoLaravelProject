@@ -1,6 +1,6 @@
 @props(['board'])
 
-<nav class="flex justify-between mb-8 mx-20">
+<nav class="flex justify-between my-4 mx-8">
     @guest
         <a href="/">Home</a>
         <a href="/register">Register</a>
