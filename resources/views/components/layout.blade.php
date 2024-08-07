@@ -14,7 +14,7 @@
     
         <x-sidebar :board='$board ?? null' />
 
-        <div class="flex-1">
+        <div class="flex-1 pt-10">
             {{ $slot }}
         </div>
     </div>

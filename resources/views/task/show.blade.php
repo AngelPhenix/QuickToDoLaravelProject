@@ -1,6 +1,6 @@
 <x-layout :board="$board ?? null">
 
-    <div class="flex flex-col items-center pt-10">
+    <div class="flex flex-col items-center">
         @if ($errors->any())
         <div class="alert alert-danger pb-5 text-2xl">
             <ul>

@@ -13,7 +13,7 @@
             <a class="px-2 py-1 bg-slate-500 rounded hover:bg-slate-600" href="/board_create">Create board</a>
 
             @if (isset($board))
-            <a href="/historic/board/{{$board->id}}">Logs</a>
+                <a href="/historic/board/{{$board->id}}">Logs</a>
             @endif
 
             <a href="/boards">Boards</a>
