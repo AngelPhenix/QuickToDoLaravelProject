@@ -9,12 +9,10 @@
     <title>Todo App</title>
 </head>
 <body class="bg-[#232326] h-full text-white">
-    <x-nav :board='$board ?? null'/>
-
     <!-- Sidebar -->
     <div id="main-content" class="flex w-full">
     
-        <x-sidebar />
+        <x-sidebar :board='$board ?? null' />
 
         <div class="flex-1">
             {{ $slot }}
