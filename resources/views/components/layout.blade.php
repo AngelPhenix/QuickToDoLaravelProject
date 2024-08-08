@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <div id="main-content" class="flex w-full">
     
-        <x-sidebar :board='$board ?? null' />
+        <x-sidebar :boardList='$boardList ?? null' :board='$board ?? null' />
 
         <div class="flex-1 pt-10">
             {{ $slot }}

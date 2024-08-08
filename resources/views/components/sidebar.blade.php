@@ -1,4 +1,4 @@
-@props(['board'])
+@props(['board', 'boardList'])
 
 <div class="w-64 h-screen bg-[#424246] text-white p-4">
     @guest
@@ -14,7 +14,10 @@
             <div class="flex flex-col gap-y-2">
                 <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/boards">My Boards</a>
                 @if (isset($board))
-                <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/historic/board/{{$board->id}}">Logs</a>
+                    <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/historic/board/{{$board->id}}">Logs</a>
+                @endif
+                @if (isset($boardList))
+                    <p>Test</p>
                 @endif
                 <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/board_create">Create board</a>
             </div>
