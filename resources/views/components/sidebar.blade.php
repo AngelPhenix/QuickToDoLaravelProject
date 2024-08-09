@@ -12,10 +12,7 @@
     @auth
         <div class="flex flex-col justify-between gap-y-2 h-full">
             <div class="flex flex-col gap-y-2">
-                <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/boards">My Boards</a>
-                @if (isset($board))
-                    <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/historic/board/{{$board->id}}">Logs</a>
-                @endif
+                <p class="font-bold">My Boards</p>
                 @if (isset($boardList))
                     @foreach ($boardList as $board)
                         <a class="px-2 py-1 bg-[#202020] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>

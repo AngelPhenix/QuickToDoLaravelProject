@@ -8,16 +8,12 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', function() {
-    return view('welcome');
-});
-
 Route::post('/post_task/{board}', [TaskController::class, 'store'])->middleware(['auth', 'can:update,board']);
 Route::delete('/delete_task/{task}', [TaskController::class, 'destroy'])->middleware('auth');
 Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth');
 Route::get('/board/{board}', [TaskController::class, 'show'])->middleware(['auth', 'can:view,board']);
 
+Route::get('/', [BoardController::class, 'welcome']);
 Route::get('/boards', [BoardController::class, 'index'])->middleware('auth');
 Route::get('/board_create', [BoardController::class, 'create'])->middleware('auth');
 Route::post('/board', [BoardController::class, 'store'])->middleware('auth');

@@ -22,6 +22,11 @@ class BoardController extends Controller
         ]);
     }
 
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
     public function create()
     {
         return view('board.create', [
