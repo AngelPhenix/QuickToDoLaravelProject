@@ -19,7 +19,8 @@ class TaskController extends Controller
         return view('task.show', [
             'board' => $board,
             'tasks' => $tasks,
-            'labels' => $labels
+            'labels' => $labels,
+            'boardList' => Auth::user()->boards
         ]);
     }
 
