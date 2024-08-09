@@ -18,7 +18,7 @@
                 @endif
                 @if (isset($boardList))
                     @foreach ($boardList as $board)
-                        <p>{{ $board->name }}</p>
+                        <a class="px-2 py-1 bg-[#202020] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>
                     @endforeach
                 @endif
                 <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/board_create">Create board</a>
