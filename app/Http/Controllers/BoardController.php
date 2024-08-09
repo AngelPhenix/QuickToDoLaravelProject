@@ -18,13 +18,15 @@ class BoardController extends Controller
 
         return view('board.view', [
             'boards' => $boards,
-            'boardList' => 'test'
+            'boardList' => $boards
         ]);
     }
 
     public function create()
     {
-        return view('board.create');
+        return view('board.create', [
+            'boardList' => Auth::user()->boards
+        ]);
     }
 
     // When board is created, add the owner to the board_user pivot table

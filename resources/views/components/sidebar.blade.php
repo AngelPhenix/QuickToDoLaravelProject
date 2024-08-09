@@ -17,7 +17,9 @@
                     <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/historic/board/{{$board->id}}">Logs</a>
                 @endif
                 @if (isset($boardList))
-                    <p>Test</p>
+                    @foreach ($boardList as $board)
+                        <p>{{ $board->name }}</p>
+                    @endforeach
                 @endif
                 <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/board_create">Create board</a>
             </div>

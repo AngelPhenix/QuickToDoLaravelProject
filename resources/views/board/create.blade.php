@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :boardList='$boardList ?? null'>
     <div class="flex flex-col items-center">
         <h1 class="text-2xl mb-10">Create a new board :</h1>
         <form class="flex flex-col" method="post" action="/board">

@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :boardList='$boardList ?? null'>
     <div class="flex flex-col items-center">
         <h1 class="text-4xl pb-5">-- Your boards --</h1>
         @if ($boards->isEmpty())
