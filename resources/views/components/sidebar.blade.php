@@ -18,7 +18,7 @@
                         <a class="px-2 py-1 bg-[#202020] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>
                     @endforeach
                 @endif
-                <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/board_create">Create board</a>
+                <a class="w-[32px] h-[32px] flex items-center justify-center rounded bg-[#202020] hover:bg-[#17171a]" href="/board_create">+</a>
             </div>
             <div class="flex flex-col gap-y-2">
                 <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/logout">Logout</a>
