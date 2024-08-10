@@ -12,10 +12,21 @@
     @auth
         <div class="flex flex-col justify-between gap-y-2 h-full">
             <div class="flex flex-col gap-y-2">
+                <p class="font-bold">Collaboration Boards</p>
+                @if (isset($boardList))
+                    @foreach ($boardList as $board)
+                        @if (Auth::user()->id != $board->owner_id)
+                        <a class="px-2 py-1 bg-[#473535] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>   
+                        @endif
+                    @endforeach
+                @endif
+
                 <p class="font-bold">My Boards</p>
                 @if (isset($boardList))
                     @foreach ($boardList as $board)
-                        <a class="px-2 py-1 bg-[#202020] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>
+                        @if (Auth::user()->id == $board->owner_id)
+                        <a class="px-2 py-1 bg-[#313328] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>   
+                        @endif
                     @endforeach
                 @endif
                 <a class="w-[32px] h-[32px] flex items-center justify-center rounded bg-[#202020] hover:bg-[#17171a]" href="/board_create">+</a>
