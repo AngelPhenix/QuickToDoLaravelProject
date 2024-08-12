@@ -3,9 +3,9 @@
 <div class="w-64 h-screen bg-[#424246] text-white p-4">
     @guest
     <nav class="flex flex-col gap-y-2">
-        <a href="/">Home</a>
-        <a href="/register">Register</a>
-        <a href="/login">Login</a>
+        <a class="px-2 py-1 rounded hover:bg-[#17171a] href="/">Home</a>
+        <a class="px-2 py-1 rounded hover:bg-[#17171a] href="/register">Register</a>
+        <a class="px-2 py-1 rounded hover:bg-[#17171a] href="/login">Login</a>
     </nav>
     @endguest
     

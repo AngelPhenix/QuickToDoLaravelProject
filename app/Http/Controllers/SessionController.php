@@ -33,7 +33,7 @@ class SessionController extends Controller
 
     public function profile()
     {
-        //
+        return view('auth.profile');
     }
 
     public function destroy()
