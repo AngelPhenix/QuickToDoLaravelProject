@@ -22,7 +22,7 @@
                 @endif
 
                 <p class="font-bold">My Boards</p>
-                @if (isset($boardList))
+                @if (isset($boardList))                        
                     @foreach ($boardList as $board)
                         @if (Auth::user()->id == $board->owner_id)
                         <a class="px-2 py-1 bg-[#313328] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>   
@@ -32,6 +32,7 @@
                 <a class="w-[32px] h-[32px] flex items-center justify-center rounded bg-[#202020] hover:bg-[#17171a]" href="/board_create">+</a>
             </div>
             <div class="flex flex-col gap-y-2">
+                <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/profile">My Profile</a>
                 <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/logout">Logout</a>
             </div>
         </div>
