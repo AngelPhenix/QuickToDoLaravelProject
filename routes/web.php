@@ -32,3 +32,5 @@ Route::get('/historic/board/{board}', [HistoricController::class, 'index'])->mid
 Route::post('/add_label/{task}', [LabelController::class, 'store'])->middleware('auth');
 Route::patch('/update_task/{task}/label/{label}', [LabelController::class, 'update'])->middleware('auth');
 Route::patch('delete_label/{label}/from_task/{task}', [LabelController::class, 'deleteFromTask'])->middleware('auth');
+
+Route::get('/profile', [SessionController::class, 'profile'])->middleware('auth');

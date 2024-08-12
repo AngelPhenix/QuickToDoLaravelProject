@@ -31,6 +31,11 @@ class SessionController extends Controller
         ]);
     }
 
+    public function profile()
+    {
+        //
+    }
+
     public function destroy()
     {
         Auth::logout();
