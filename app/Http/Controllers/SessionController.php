@@ -33,7 +33,11 @@ class SessionController extends Controller
 
     public function profile()
     {
-        return view('auth.profile');
+        $boards = Auth::user()->boards;
+
+        return view('auth.profile', [
+            'boardList' => $boards
+        ]);
     }
 
     public function destroy()
