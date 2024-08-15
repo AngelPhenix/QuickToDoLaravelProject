@@ -2,10 +2,14 @@
 
 <div class="w-64 h-screen bg-[#424246] text-white p-4">
     @guest
-    <nav class="flex flex-col gap-y-2">
-        <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/">Home</a>
-        <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/register">Register</a>
-        <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/login">Login</a>
+    <nav class="flex flex-col justify-between gap-y-2 h-full">
+        <div class="flex flex-col gap-y-2">
+            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/">Home</a>
+        </div>
+        <div class="flex flex-col gap-y-2">
+            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/register">Register</a>
+            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/login">Login</a>
+        </div>
     </nav>
     @endguest
     
