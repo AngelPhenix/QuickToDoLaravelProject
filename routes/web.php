@@ -6,6 +6,7 @@ use App\Http\Controllers\LabelController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TaskController;
+use app\Http\Controllers\FriendController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/post_task/{board}', [TaskController::class, 'store'])->middleware(['auth', 'can:update,board']);
@@ -34,3 +35,5 @@ Route::patch('/update_task/{task}/label/{label}', [LabelController::class, 'upda
 Route::patch('delete_label/{label}/from_task/{task}', [LabelController::class, 'deleteFromTask'])->middleware('auth');
 
 Route::get('/profile', [SessionController::class, 'profile'])->middleware('auth');
+
+Route::post('/addfriend', [FriendController::class, 'store'])->middleware('auth');
