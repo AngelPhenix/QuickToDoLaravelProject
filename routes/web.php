@@ -6,7 +6,7 @@ use App\Http\Controllers\LabelController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TaskController;
-use app\Http\Controllers\FriendController;
+use App\Http\Controllers\FriendController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/post_task/{board}', [TaskController::class, 'store'])->middleware(['auth', 'can:update,board']);
