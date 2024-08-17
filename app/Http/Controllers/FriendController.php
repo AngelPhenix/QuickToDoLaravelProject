@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FriendController extends Controller
 {
@@ -12,6 +14,20 @@ class FriendController extends Controller
             'email' => ['required', 'email']
         ]);
 
-        dd($attributes);
+        $user = Auth::user();
+
+        $friend = User::where('email', $attributes['email'])->first();
+
+        if($user->id === $friend->id) {
+            return redirect()->back()->with('error', 'You cannot add yourself as a friend.');
+        }
+
+        if($user->friends()->where('friend_id', $friend->id)->exists()) {
+            return redirect()->back()->with('error', 'This friend already exists in you friendlist');
+        }
+
+        $user->friends()->attach($friend->id);
+
+        return redirect()->back();
     }
 }

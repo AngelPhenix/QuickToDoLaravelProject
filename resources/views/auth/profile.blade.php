@@ -8,6 +8,9 @@
                 <button>Add</button>
             </form>
             <x-form-error fieldname="email"/>
+            @if (session('error'))
+                <div class="bg-red-500 text-white p-2 rounded">{{ session('error') }}</div>
+            @endif
         </div>
     </div>
 </x-layout>
