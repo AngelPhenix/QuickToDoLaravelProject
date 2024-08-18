@@ -10,6 +10,8 @@
             <x-form-error fieldname="email"/>
             @if (session('error'))
                 <div class="bg-red-500 text-white p-2 rounded">{{ session('error') }}</div>
+            @elseif (session('success'))
+                <div class="bg-green-500 text-white p-2 rounded">{{ session('success') }}</div>
             @endif
         </div>
     </div>
