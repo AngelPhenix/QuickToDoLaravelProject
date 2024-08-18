@@ -18,6 +18,10 @@ class FriendController extends Controller
 
         $friend = User::where('email', $attributes['email'])->first();
 
+        if(!$friend) {
+            return redirect()->back()->with('error', 'Nobody corresponds to this email.');
+        }
+        
         if($user->id === $friend->id) {
             return redirect()->back()->with('error', 'You cannot add yourself as a friend.');
         }
@@ -28,6 +32,7 @@ class FriendController extends Controller
 
         $user->friends()->attach($friend->id);
 
-        return redirect()->back();
+
+        return redirect()->back()->with('success', 'Your friend has successfully been added.');
     }
 }
