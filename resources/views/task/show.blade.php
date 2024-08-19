@@ -23,8 +23,7 @@
             @can('addFriend', $board)
                 <form method="post" action="/board_addfriend/{{$board->id}}" class="flex gap-x-3">
                     @csrf
-                    <input class="text-black pl-1" id="mail" name="mail" type="text" placeholder="User's mail"/>
-                    <select name="mail" id="mail">
+                    <select class="text-black" name="mail" id="mail">
                         @foreach ($friends as $friend)
                             <option value="{{ $friend->email }}">{{ $friend->username }}</option>
                         @endforeach
