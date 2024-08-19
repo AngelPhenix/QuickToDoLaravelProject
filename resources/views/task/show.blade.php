@@ -1,4 +1,4 @@
-<x-layout :boardList='$boardList ?? null' :board='$board ?? null'>
+<x-layout :boardList='$boardList ?? null' :board='$board ?? null' :friends='$friends ?? null'>
 
     <div class="flex flex-col items-center">
         @if ($errors->any())

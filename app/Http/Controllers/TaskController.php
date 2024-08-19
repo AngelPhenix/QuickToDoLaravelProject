@@ -20,7 +20,8 @@ class TaskController extends Controller
             'board' => $board,
             'tasks' => $tasks,
             'labels' => $labels,
-            'boardList' => Auth::user()->boards
+            'boardList' => Auth::user()->boards,
+            'friends' => Auth::user()->friends
         ]);
     }
 
