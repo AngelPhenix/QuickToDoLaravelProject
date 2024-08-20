@@ -21,6 +21,12 @@
             <x-form-error fieldname='password' />
         </div>
 
+        <div class="flex flex-col">
+            <label for="icon">Icon</label>
+            <input class="py-1 px-4 w-[350px]" type="file" id="icon" name="icon" />
+            <x-form-error fieldname='icon' />
+        </div>
+
         <button class="bg-slate-600 py-1 px-3">Create</button>
     </form>
 </x-layout>

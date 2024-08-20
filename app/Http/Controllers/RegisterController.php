@@ -18,8 +18,15 @@ class RegisterController extends Controller
         $attributes = $request->validate([
             'username' => ['required', 'min:5'],
             'password' => ['required', 'min:3'],
-            'email' => ['required']
+            'email' => ['required'],
+            'icon' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
         ]);
+
+        if($request->hasFile('icon')) {
+            $filename = Auth::user()->id . '_' . time() . '.' . $request->icon->extension();
+            $request->icon->storeAs('public/icons', $filename);
+            $attributes['icon'] = $filename;
+        }
 
         $user = User::create($attributes);
 
