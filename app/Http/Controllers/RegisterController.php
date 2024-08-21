@@ -23,7 +23,7 @@ class RegisterController extends Controller
         ]);
 
         if($request->hasFile('icon')) {
-            $filename = Auth::user()->id . '_' . time() . '.' . $request->icon->extension();
+            $filename = $request->username . '_' . time() . '.' . $request->icon->extension();
             $request->icon->storeAs('public/icons', $filename);
             $attributes['icon'] = $filename;
         }
