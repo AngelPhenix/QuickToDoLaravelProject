@@ -1,6 +1,6 @@
 <x-layout>
 
-    <form class="flex flex-col items-center gap-5" method="post" action="/register">
+    <form class="flex flex-col items-center gap-5" method="post" action="/register" enctype="multipart/form-data">
         @csrf
 
         <div class="flex flex-col">

@@ -19,7 +19,7 @@ class RegisterController extends Controller
             'username' => ['required', 'min:5'],
             'password' => ['required', 'min:3'],
             'email' => ['required'],
-            'icon' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
+            'icon' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
         ]);
 
         if($request->hasFile('icon')) {
