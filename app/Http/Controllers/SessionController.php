@@ -34,9 +34,11 @@ class SessionController extends Controller
     public function profile()
     {
         $boards = Auth::user()->boards;
+        $friends = Auth::user()->friends;
 
         return view('auth.profile', [
-            'boardList' => $boards
+            'boardList' => $boards,
+            'friends' => $friends
         ]);
     }
 
