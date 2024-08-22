@@ -1,5 +1,5 @@
-<x-layout class="justify-center" :boardList='$boardList ?? null'>
-    <div class="flex flex-col justify-center items-center gap-x-5 bg-slate-500 w-[600px]">
+<x-layout :boardList='$boardList ?? null'>
+    <div class="mx-auto flex flex-col justify-center items-center gap-y-2 bg-slate-500 w-[400px] py-5">
         <div class="flex flex-col items-center">
             <p>Friendlist :</p>
             <ul>
