@@ -11,7 +11,10 @@
         </div>
         @endif
 
-        <div class="flex gap-x-5 pb-5">
+        <div class="flex items-center gap-x-5 pb-5">
+            <a href="#" class="flex items-center justify-center w-4 h-4">
+                <i class="fas fa-cog text-gray-500 hover:text-gray-500 text-xl"></i>
+            </a>
             @can('delete', $board)
                 <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">
                     @csrf
