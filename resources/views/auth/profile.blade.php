@@ -10,7 +10,6 @@
                 @else
                     <li>Your friendlist is empty</li>
                 @endif
-                
             </ul>
             
         </div>

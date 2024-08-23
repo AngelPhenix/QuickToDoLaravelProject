@@ -7,8 +7,8 @@
             <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/">Home</a>
         </div>
         <div class="flex flex-col gap-y-2">
-            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/register">Register</a>
             <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/login">Login</a>
+            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/register">Register</a>
         </div>
     </nav>
     @endguest
