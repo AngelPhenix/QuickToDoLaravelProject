@@ -21,6 +21,13 @@ class BoardController extends Controller
         ]);
     }
 
+    public function options(Board $board)
+    {
+        return view('options', [
+            'board' => $board
+        ]);
+    }
+
     public function welcome()
     {
         return view('welcome');
