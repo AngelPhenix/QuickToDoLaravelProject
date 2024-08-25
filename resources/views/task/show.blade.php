@@ -16,17 +16,6 @@
                 <i class="fas fa-cog text-gray-500 hover:text-gray-500 text-xl"></i>
             </a>
             <h1 class="text-4xl">{{ $board->name }}</h1>
-            @can('addFriend', $board)
-                <form method="post" action="/board_addfriend/{{$board->id}}" class="flex gap-x-3">
-                    @csrf
-                    <select class="text-black" name="mail" id="mail">
-                        @foreach ($friends as $friend)
-                            <option value="{{ $friend->email }}">{{ $friend->username }}</option>
-                        @endforeach
-                    </select>
-                    <button class="bg-blue-500 px-4 rounded">Add Collaborator</button>
-                </form>
-            @endcan
         </div>
         <p class=" text-sm">Collaborators :</p>
         <ul class="text-sm pb-5">
