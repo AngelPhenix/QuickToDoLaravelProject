@@ -15,13 +15,6 @@
             <a href="/settings/{{$board->id}}" class="flex items-center justify-center w-4 h-4">
                 <i class="fas fa-cog text-gray-500 hover:text-gray-500 text-xl"></i>
             </a>
-            @can('delete', $board)
-                <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">
-                    @csrf
-                    @method('DELETE')
-                    <button class="bg-red-500 px-4 rounded">Delete</button>
-                </form>
-            @endcan
             <h1 class="text-4xl">{{ $board->name }}</h1>
             @can('addFriend', $board)
                 <form method="post" action="/board_addfriend/{{$board->id}}" class="flex gap-x-3">
