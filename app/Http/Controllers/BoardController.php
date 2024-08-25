@@ -23,8 +23,11 @@ class BoardController extends Controller
 
     public function options(Board $board)
     {
-        return view('options', [
-            'board' => $board
+        $boards = Auth::user()->boards;
+
+        return view('board.options', [
+            'board' => $board,
+            'boardList' => $boards
         ]);
     }
 
