@@ -82,7 +82,7 @@ class BoardController extends Controller
             return redirect()->back()->withErrors(['user_added' => "This user is already a collaborator on this board"]);
         }
 
-        return redirect()->back();
+        return redirect('/board/'. $board->id);
     }
 
     public function destroy(Board $board)

@@ -15,11 +15,13 @@
         @endcan
 
         @can('delete', $board)
+        <div class="fixed bottom-10 right-10">
             <form method="post" action="/delete_board/{{$board->id}}" class="flex gap-x-3">
                 @csrf
                 @method('DELETE')
                 <button class="bg-red-500 px-2 rounded">Delete this board</button>
             </form>
+        </div>
         @endcan
     </div>
 </x-layout>

@@ -11,8 +11,8 @@
         </div>
         @endif
 
-        <div class="flex items-center gap-x-5 pb-5">
-            <a href="/settings/{{$board->id}}" class="flex items-center justify-center w-4 h-4">
+        <div class="flex items-center gap-x-3 pb-5">
+            <a href="/settings/{{$board->id}}" class="flex items-center justify-center w-4 h-4 pt-1">
                 <i class="fas fa-cog text-gray-500 hover:text-gray-500 text-xl"></i>
             </a>
             <h1 class="text-4xl">{{ $board->name }}</h1>
