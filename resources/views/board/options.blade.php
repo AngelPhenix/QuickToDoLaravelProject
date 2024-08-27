@@ -11,6 +11,9 @@
                     @endforeach
                 </select>
                 <button class="bg-blue-500 px-4 rounded">Add Collaborator</button>
+                @if (session('user_added'))
+                    <div class="bg-red-500 text-white p-2 rounded">{{ session('user_added') }}</div>
+                @endif
             </form>
         @endcan
 

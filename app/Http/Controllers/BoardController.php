@@ -79,7 +79,7 @@ class BoardController extends Controller
         if($board->users->doesntContain($user)) {
             $board->users()->attach($user);
         }else{
-            return redirect()->back()->withErrors(['user_added' => "This user is already a collaborator on this board"]);
+            return redirect()->back()->with(['user_added' => "This user is already a collaborator on this board"]);
         }
 
         return redirect('/board/'. $board->id);
