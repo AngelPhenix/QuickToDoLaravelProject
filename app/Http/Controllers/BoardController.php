@@ -73,7 +73,7 @@ class BoardController extends Controller
         $user = User::where('email', $attributes['mail'])->first();
 
         if(!$user){
-            return redirect()->back()->withErrors(['email_added' => "The mail doesn't corresponds to any user."]);
+            return redirect()->back()->with(['user_added' => "The mail doesn't corresponds to any user."]);
         }
 
         if($board->users->doesntContain($user)) {
