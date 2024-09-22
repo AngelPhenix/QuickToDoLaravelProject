@@ -20,7 +20,7 @@ Route::get('/board_create', [BoardController::class, 'create'])->middleware('aut
 Route::post('/board', [BoardController::class, 'store'])->middleware('auth');
 Route::post('/board_addfriend/{board}', [BoardController::class, 'addFriend'])->middleware(['auth', 'can:addFriend,board']);
 Route::delete('/delete_board/{board}', [BoardController::class, 'destroy'])->middleware(['auth', 'can:delete,board']);
-Route::get('/settings/{board}', [BoardController::class, 'options'])->middleware(['auth', 'can:addFriend,board']);
+Route::get('/settings/{board}', [BoardController::class, 'options'])->middleware(['auth', 'can:addFriend,board'])->name('settings');
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'create']);
