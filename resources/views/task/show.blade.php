@@ -28,7 +28,7 @@
             @endforeach
         </ul>
 
-        <form method="post" action="/post_task/{{$board->id}}" class="flex gap-x-3">
+        <form method="post" action="{{ route('post_action', ['board' => $board->id])}}" class="flex gap-x-3">
             @csrf
 
             <input class="text-black py-2 px-3" type="text" id="name" name="name"/>
@@ -41,7 +41,7 @@
                 @foreach ($tasks as $task)
                         <li class="w-full flex">
 
-                            <form class="flex bg-slate-700 pl-2 {{$task->is_completed ? 'bg-slate-800' : ''}} " method="post" action="/task_completed/{{ $task->id }}">
+                            <form class="flex bg-slate-700 pl-2 {{$task->is_completed ? 'bg-slate-800' : ''}} " method="post" action="{{ route('completed_task', ['task' => $task->id])}}">
                                 @csrf
                                 @method('PATCH')
                                 <input type="checkbox" name="is_completed" id="is_completed" {{ $task->is_completed ? 'checked' : ''}} onchange="this.form.submit()">

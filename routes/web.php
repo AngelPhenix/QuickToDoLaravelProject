@@ -9,9 +9,9 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\FriendController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/post_task/{board}', [TaskController::class, 'store'])->middleware(['auth', 'can:update,board']);
+Route::post('/post_task/{board}', [TaskController::class, 'store'])->middleware(['auth', 'can:update,board'])->name('post_action');
 Route::delete('/delete_task/{task}', [TaskController::class, 'destroy'])->middleware('auth');
-Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth');
+Route::patch('/task_completed/{task}', [TaskController::class, 'update'])->middleware('auth')->name('completed_task');
 Route::get('/board/{board}', [TaskController::class, 'show'])->middleware(['auth', 'can:view,board']);
 
 Route::get('/', [BoardController::class, 'welcome']);
