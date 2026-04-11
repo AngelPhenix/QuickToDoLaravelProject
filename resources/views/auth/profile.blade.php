@@ -1,29 +1,46 @@
 <x-layout :boardList='$boardList ?? null'>
-    <div class="mx-auto flex flex-col justify-center items-center gap-y-2 bg-slate-500 w-[400px] py-5">
-        <div class="flex flex-col items-center">
-            <p>Friendlist :</p>
-            <ul>
+    <div class="mx-auto max-w-2xl space-y-6">
+        <div>
+            <div class="ui-caption">Account</div>
+            <h1 class="ui-h1">My profile</h1>
+        </div>
+
+        <div class="ui-card p-5">
+            <div class="ui-h2">Friend list</div>
+            <div class="ui-caption mt-1">People you can invite to boards.</div>
+
+            <div class="mt-4 flex flex-wrap gap-2">
                 @if (!$friends->isEmpty())
                     @foreach ($friends as $friend)
-                        <li>{{ $friend->username }}</li>
+                        <span class="ui-chip">
+                            <i class="fa-regular fa-user ui-muted"></i>
+                            <span>{{ $friend->username }}</span>
+                        </span>
                     @endforeach
                 @else
-                    <li>Your friendlist is empty</li>
+                    <span class="ui-muted text-sm">Your friend list is empty.</span>
                 @endif
-            </ul>
-            
-        </div>
-        <div class="flex flex-col items-center">
-            <form method="post" action="/addfriend">
+            </div>
+
+            <div class="ui-divider my-5"></div>
+
+            <form method="post" action="/addfriend" class="flex flex-col gap-3 sm:flex-row sm:items-end">
                 @csrf
-                <input class="text-black" type="text" name="email" id="email" />
-                <button>Add</button>
+                <div class="ui-field flex-1">
+                    <label class="ui-label" for="email">Add a friend by email</label>
+                    <input class="ui-input" type="email" name="email" id="email" autocomplete="email" />
+                    <x-form-error fieldname="email"/>
+                </div>
+                <button class="ui-btn ui-btn-neon sm:shrink-0" type="submit">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Add</span>
+                </button>
             </form>
-            <x-form-error fieldname="email"/>
+
             @if (session('error'))
-                <div class="bg-red-500 text-white p-2 rounded">{{ session('error') }}</div>
+                <div class="mt-3 ui-card-soft p-3 border border-red-500/30 text-red-300 text-sm">{{ session('error') }}</div>
             @elseif (session('success'))
-                <div class="bg-green-500 text-white p-2 rounded">{{ session('success') }}</div>
+                <div class="mt-3 ui-card-soft p-3 border border-green-500/30 text-green-200 text-sm">{{ session('success') }}</div>
             @endif
         </div>
     </div>

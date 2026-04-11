@@ -85,6 +85,19 @@ class BoardController extends Controller
         return redirect('/board/'. $board->id);
     }
 
+    public function rename(Request $request, Board $board)
+    {
+        $attributes = $request->validate([
+            'name' => ['required', 'string', 'max:80']
+        ]);
+
+        $board->update([
+            'name' => $attributes['name']
+        ]);
+
+        return redirect()->back()->with(['board_renamed' => 'Board renamed successfully.']);
+    }
+
     public function destroy(Board $board)
     {
         $board->delete();

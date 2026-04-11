@@ -1,12 +1,24 @@
 <x-layout :boardList='$boardList ?? null'>
-    <div class="flex flex-col items-center">
-        <h1 class="text-2xl mb-10">Create a new board :</h1>
-        <form class="flex flex-col" method="post" action="/board">
-            @csrf
-            <input class="text-black pl-2 py-1" type="text" name="name" id="name"/>
-            <x-form-error fieldname='name'/>
+    <div class="mx-auto max-w-lg space-y-6">
+        <div>
+            <div class="ui-caption">Boards</div>
+            <h1 class="ui-h1">Create a new board</h1>
+        </div>
 
-            <button class="py-1 bg-slate-600" type="submit">Create</button>
-        </form>
+        <div class="ui-card p-5">
+            <form class="space-y-4" method="post" action="/board">
+                @csrf
+                <div class="ui-field">
+                    <label class="ui-label" for="name">Board name</label>
+                    <input class="ui-input" type="text" name="name" id="name" placeholder="e.g. Sprint Planning" autocomplete="off" />
+                    <x-form-error fieldname='name'/>
+                </div>
+
+                <button class="ui-btn ui-btn-neon w-full" type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Create</span>
+                </button>
+            </form>
+        </div>
     </div>
 </x-layout>

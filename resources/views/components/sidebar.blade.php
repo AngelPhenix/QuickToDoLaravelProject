@@ -1,44 +1,99 @@
 @props(['board', 'boardList'])
 
-<div class="w-64 h-screen bg-[#424246] text-white p-4">
+<aside class="ui-sidebar sticky top-0 w-72 h-dvh p-4">
     @guest
-    <nav class="flex flex-col justify-between gap-y-2 h-full">
-        <div class="flex flex-col gap-y-2">
-            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/">Home</a>
+    <nav class="flex flex-col justify-between gap-y-4 h-full">
+        <div class="flex flex-col gap-y-3">
+            <div class="px-2">
+                <div class="text-sm ui-muted">Kaban</div>
+                <div class="ui-h2">Quick ToDo</div>
+            </div>
+            <div class="ui-divider"></div>
+            <a class="ui-link {{ request()->is('/') ? 'is-active' : '' }}" href="/">
+                <i class="fa-solid fa-house ui-muted"></i>
+                <span>Home</span>
+            </a>
         </div>
         <div class="flex flex-col gap-y-2">
-            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/login">Login</a>
-            <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/register">Register</a>
+            <a class="ui-link {{ request()->is('login') ? 'is-active' : '' }}" href="/login">
+                <i class="fa-solid fa-right-to-bracket ui-muted"></i>
+                <span>Login</span>
+            </a>
+            <a class="ui-link {{ request()->is('register') ? 'is-active' : '' }}" href="/register">
+                <i class="fa-solid fa-user-plus ui-muted"></i>
+                <span>Register</span>
+            </a>
         </div>
     </nav>
     @endguest
     
     @auth
-        <div class="flex flex-col justify-between gap-y-2 h-full">
-            <div class="flex flex-col gap-y-2">
-                <p class="font-bold">Collaboration Boards</p>
-                @if (isset($boardList))
-                    @foreach ($boardList as $board)
-                        @if (Auth::user()->id != $board->owner_id)
-                        <a class="px-2 py-1 bg-[#473535] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>   
-                        @endif
-                    @endforeach
-                @endif
+        <div class="flex flex-col justify-between gap-y-4 h-full">
+            <div class="flex flex-col gap-y-4">
+                <div class="px-2">
+                    <div class="text-sm ui-muted">Kaban</div>
+                    <div class="ui-h2">Boards</div>
+                </div>
+                <div class="ui-divider"></div>
 
-                <p class="font-bold">My Boards</p>
-                @if (isset($boardList))                        
-                    @foreach ($boardList as $board)
-                        @if (Auth::user()->id == $board->owner_id)
-                        <a class="px-2 py-1 bg-[#313328] rounded hover:bg-[#17171a]" href="/board/{{$board->id}}"> {{$board->name}} </a>   
+                <div class="flex flex-col gap-y-2">
+                    <p class="text-xs ui-muted px-2">Collaboration</p>
+                @if (isset($boardList))
+                    @foreach ($boardList as $b)
+                        @if (Auth::user()->id != $b->owner_id)
+                        <a class="ui-link {{ request()->is('board/'.$b->id) ? 'is-active' : '' }} justify-between" href="/board/{{$b->id}}">
+                            <span class="flex min-w-0 items-center gap-2">
+                                <i class="fa-regular fa-handshake ui-muted"></i>
+                                <span class="truncate">{{ $b->name }}</span>
+                            </span>
+                            <span class="ui-badge ui-badge-collab">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Collab</span>
+                            </span>
+                        </a>
                         @endif
                     @endforeach
                 @endif
-                <a class="w-[32px] h-[32px] flex items-center justify-center rounded bg-[#202020] hover:bg-[#17171a]" href="/board_create">+</a>
+                </div>
+
+                <div class="flex flex-col gap-y-2">
+                <p class="text-xs ui-muted px-2">My boards</p>
+                @if (isset($boardList))                        
+                    @foreach ($boardList as $b)
+                        @if (Auth::user()->id == $b->owner_id)
+                        <a class="ui-link {{ request()->is('board/'.$b->id) ? 'is-active' : '' }} justify-between" href="/board/{{$b->id}}">
+                            <span class="flex min-w-0 items-center gap-2">
+                                <i class="fa-solid fa-crown text-sky-300"></i>
+                                <span class="truncate">{{ $b->name }}</span>
+                            </span>
+                            <span class="ui-badge ui-badge-owner">
+                                <i class="fa-solid fa-user-check"></i>
+                                <span>Owner</span>
+                            </span>
+                        </a>
+                        @endif
+                    @endforeach
+                @endif
+                </div>
+
+                <div class="px-2 pt-1">
+                    <a class="ui-btn ui-btn-neon w-full" href="/board_create">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>New board</span>
+                    </a>
+                </div>
             </div>
             <div class="flex flex-col gap-y-2">
-                <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/profile">My Profile</a>
-                <a class="px-2 py-1 rounded hover:bg-[#17171a]" href="/logout">Logout</a>
+                <div class="ui-divider"></div>
+                <a class="ui-link {{ request()->is('profile') ? 'is-active' : '' }}" href="/profile">
+                    <i class="fa-regular fa-user ui-muted"></i>
+                    <span>My profile</span>
+                </a>
+                <a class="ui-link" href="/logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket ui-muted"></i>
+                    <span>Logout</span>
+                </a>
             </div>
         </div>
     @endauth
-</div>
+</aside>

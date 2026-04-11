@@ -2,22 +2,44 @@
 
 <div x-data="{ open: false }">
     <!-- Button to open the modal -->
-    <button @click="open = true" class="bg-blue-500 text-white px-2 rounded">+</button>
+    <button @click="open = true" type="button" class="ui-tag ui-tag-btn">
+        <i class="fa-solid fa-tag text-sky-300"></i>
+        <span>Labels</span>
+        <span class="ui-muted">+</span>
+    </button>
 
     <!-- Modal background -->
-    <div x-show="open" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+    <div x-show="open" class="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
         <!-- Modal content -->
-        <div @click.away="open = false" class="bg-slate-500 text-black p-6 rounded shadow-lg max-w-[290px]">
-            <h2 class="text-lg font-semibold">Add Labels</h2>
-            <!-- Your form or content here -->
-            <form id="form_add_{{$task->id}}" method="POST" action="/add_label/{{$task->id}}" class="flex items-center gap-x-2">
+        <div @click.away="open = false" class="ui-card ui-glow w-full max-w-md p-5">
+            <div class="flex items-start justify-between gap-3">
+                <div>
+                    <div class="ui-h2">Labels</div>
+                    <div class="ui-caption mt-1">Add a new label or toggle existing ones.</div>
+                </div>
+                <button type="button" @click="open = false" class="ui-btn ui-icon-btn" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="form_add_{{$task->id}}" method="POST" action="/add_label/{{$task->id}}" class="mt-4 flex items-end gap-2">
                 @csrf
-                <input type="text" id="name" name="name" class="p-2 border border-gray-300 rounded-md h-10" placeholder="Label name">
-                <input type="color" name="color" class="border border-gray-300 rounded-md h-10 w-12">
+                <div class="ui-field flex-1">
+                    <label class="ui-label" for="name">Name</label>
+                    <input type="text" id="name" name="name" class="ui-input" placeholder="e.g. Urgent" autocomplete="off">
+                </div>
+                <div class="ui-field">
+                    <label class="ui-label" for="color">Color</label>
+                    <input id="color" type="color" name="color" class="ui-color">
+                </div>
+                <button type="submit" form="form_add_{{$task->id}}" class="ui-btn ui-btn-neon px-4 py-2">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add</span>
+                </button>
             </form>
 
-            <h2 class="text-sm font-semibold mb-1 mt-4"><u>Select to toggle :</u></h2>
-            <div class="max-w-md">
+            <div class="mt-5 ui-label">Toggle existing</div>
+            <div class="mt-2 flex flex-wrap gap-2">
                 @foreach ($labels as $label)
                 {{-- @if ($task->labels->contains($label))
                     <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
@@ -28,16 +50,21 @@
                 @endif --}}
 
                 @if ($task->labels->contains($label))
-                    <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
+                    <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="inline-block">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="bg-neutral-700 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
+                        <button type="submit" class="ui-tag ui-tag-btn is-selected">
+                            <i class="fa-solid fa-check text-sky-300"></i>
+                            <span class="truncate max-w-[160px]">{{ $label->name }}</span>
+                        </button>
                     </form>
                 @else
-                    <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="mb-1 inline-block">
+                    <form method="POST" action="/update_task/{{ $task->id }}/label/{{ $label->id }}" class="inline-block">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
+                        <button type="submit" class="ui-tag ui-tag-btn" style="--tag: {{ $label->color }};">
+                            <span class="truncate max-w-[160px]">{{ $label->name }}</span>
+                        </button>
                     </form>
                 @endif
 
@@ -47,11 +74,6 @@
                     <button type="submit" class="bg-[{{$label->color}}]/75 text-white px-2 py-1 rounded truncate">{{ $label->name }}</button>
                 </form> --}}
             @endforeach
-            </div>
-
-            <div class="flex justify-end mt-4">
-                <button type="button" @click="open = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
-                <button type="submit" form="form_add_{{$task->id}}" class="bg-green-500 text-white px-4 py-2 rounded">Add</button>
             </div>
         </div>
     </div>
